@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Amine
  */
 public class main {
-
+// salut amine
     /**
      * @param args the command line arguments
      */
