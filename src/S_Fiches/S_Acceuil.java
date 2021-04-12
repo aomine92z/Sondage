@@ -13,8 +13,7 @@ public class S_Acceuil extends javax.swing.JFrame {
     
     private S_Enseignant fichEnseignant;
     private S_Etudiant fichEtudiant;
-    private S_InscriptionEns fichInscriptionEns;
-    private S_ConnexionEns fichConnexionEns;
+    
     /**
      * Creates new form S_Acceuil
      */
@@ -22,11 +21,14 @@ public class S_Acceuil extends javax.swing.JFrame {
         initComponents();
         fichEtudiant = new S_Etudiant(this, false );
         fichEnseignant = new S_Enseignant(this, false );
-        //fichInscriptionEns = new S_InsciptionEns(this, false );
+        
     }
-    public S_InscriptionEns getfichInscriptionEns() {
-        return fichInscriptionEns;
-    }
+//    public S_InscriptionEns getfichInscriptionEns() {
+//        return fichInscriptionEns;
+//    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

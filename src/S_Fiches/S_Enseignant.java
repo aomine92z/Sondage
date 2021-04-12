@@ -10,6 +10,9 @@ package S_Fiches;
  * @author theobaptiste
  */
 public class S_Enseignant extends javax.swing.JDialog {
+    
+    private S_InscriptionEns fichInscriptionEns;
+    private S_ConnexionEns fichConnexionEns;
 
     /**
      * Creates new form S_Enseignant
@@ -17,6 +20,8 @@ public class S_Enseignant extends javax.swing.JDialog {
     public S_Enseignant(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fichInscriptionEns = new S_InscriptionEns(parent, false);
+        fichConnexionEns = new S_ConnexionEns(parent, false);
     }
 
     /**
@@ -89,8 +94,7 @@ public class S_Enseignant extends javax.swing.JDialog {
 
     private void bInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscriptionActionPerformed
         this.setVisible(false);
-        S_InscriptionEns f = ((S_Accueil) getParent()).getFichInscriptionEns();
-        f.setVisible(true);       
+        fichInscriptionEns.setVisible(true);       
     }//GEN-LAST:event_bInscriptionActionPerformed
 
     /**
