@@ -55,6 +55,11 @@ public class S_Enseignant extends javax.swing.JDialog {
         });
 
         bConnexion.setText("Connexion");
+        bConnexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConnexionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +101,11 @@ public class S_Enseignant extends javax.swing.JDialog {
         this.setVisible(false);
         fichInscriptionEns.setVisible(true);       
     }//GEN-LAST:event_bInscriptionActionPerformed
+
+    private void bConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConnexionActionPerformed
+        this.setVisible(false);
+        fichConnexionEns.setVisible(true); 
+    }//GEN-LAST:event_bConnexionActionPerformed
 
     /**
      * @param args the command line arguments
