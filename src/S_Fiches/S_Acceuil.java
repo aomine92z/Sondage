@@ -10,14 +10,23 @@ package S_Fiches;
  * @author theobaptiste
  */
 public class S_Acceuil extends javax.swing.JFrame {
-
+    
+    private S_Enseignant fichEnseignant;
+    private S_Etudiant fichEtudiant;
+    private S_InscriptionEns fichInscriptionEns;
+    private S_ConnexionEns fichConnexionEns;
     /**
      * Creates new form S_Acceuil
      */
     public S_Acceuil() {
         initComponents();
+        fichEtudiant = new S_Etudiant(this, false );
+        fichEnseignant = new S_Enseignant(this, false );
+        //fichInscriptionEns = new S_InsciptionEns(this, false );
     }
-
+    public S_InscriptionEns getfichInscriptionEns() {
+        return fichInscriptionEns;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,31 +36,76 @@ public class S_Acceuil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        bEtudiant = new javax.swing.JButton();
+        bEnseignant = new javax.swing.JButton();
+        bQuitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        bEtudiant.setText("Etudiant");
+        bEtudiant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEtudiantActionPerformed(evt);
+            }
+        });
+
+        bEnseignant.setText("Enseignant");
+        bEnseignant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEnseignantActionPerformed(evt);
+            }
+        });
+
+        bQuitter.setText("Quitter");
+        bQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuitterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel1)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addComponent(bEtudiant)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(bEnseignant)
+                .addGap(61, 61, 61))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bQuitter)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(jLabel1)
-                .addContainerGap(171, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(118, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bEtudiant)
+                    .addComponent(bEnseignant))
+                .addGap(118, 118, 118)
+                .addComponent(bQuitter)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_bQuitterActionPerformed
+
+    private void bEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEtudiantActionPerformed
+        this.setVisible(false); //this = fiche dacceuil rendre invisible
+        fichEtudiant.setVisible(true);
+    }//GEN-LAST:event_bEtudiantActionPerformed
+
+    private void bEnseignantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEnseignantActionPerformed
+       this.setVisible(false); //this = fiche dacceuil rendre invisible
+       fichEnseignant.setVisible(true);
+    }//GEN-LAST:event_bEnseignantActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +143,8 @@ public class S_Acceuil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bEnseignant;
+    private javax.swing.JButton bEtudiant;
+    private javax.swing.JButton bQuitter;
     // End of variables declaration//GEN-END:variables
 }
