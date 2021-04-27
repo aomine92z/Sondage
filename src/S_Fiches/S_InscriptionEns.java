@@ -5,6 +5,8 @@
  */
 package S_Fiches;
 
+import sondage.Teacher;
+
 /**
  *
  * @author theobaptiste
@@ -114,6 +116,8 @@ public class S_InscriptionEns extends javax.swing.JDialog {
     private void bValiderInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderInscriptionActionPerformed
         String nouveauEmail = tfEmail.getText();
         String nouveauMdp = tfMdp.getText();
+        Teacher t = new Teacher(nouveauEmail, nouveauMdp);
+        
     }//GEN-LAST:event_bValiderInscriptionActionPerformed
 
     /**

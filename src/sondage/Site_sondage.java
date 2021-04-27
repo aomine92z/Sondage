@@ -35,12 +35,9 @@ public class Site_sondage {
 
     
     //méthode pour valider la connexion d'un prof
-    public boolean verifConnexion(Teacher teach){
+    public boolean verifConnexion(Teacher teach, String nameUser, String vPassword){
         
 
-        String nameUser = teach.getMail(); // on récupère le mail entré par le prof en question
-        String vPassword = teach.getMDP(); // on récupère le mot de passe entré par le prof
-        
         // on parcourt le tableau des profs dans le site
         for (int i=0; i<ProfList.size(); i++){
             // si le mail entré correspond au mail d'un prof inscrit au site et que le mot de passe est correct
