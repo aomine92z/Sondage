@@ -35,7 +35,7 @@ public class Site_sondage {
 
     
     //méthode pour valider la connexion d'un prof
-    public boolean verifConnexion(Teacher teach, String nameUser, String vPassword){
+    public boolean verifConnexion(String nameUser, String vPassword){
         
 
         // on parcourt le tableau des profs dans le site
@@ -71,9 +71,10 @@ public class Site_sondage {
 
     
     //méthode pour ajouter un nouveau prof au tableau
-    public void ajouterNouveauProf() {
-        Teacher teach = new Teacher ("mina", "mdpa");
-        ProfList.add(teach.inscription()); 
+    public void ajouterNouveauProf(String mailo, String MDPo) {
+        Teacher t = new Teacher("mina", "mdpa");
+        t.inscription(mailo, MDPo);
+        ProfList.add(t);
         // inscription d'un prof et ajout de celui-ci à la liste de profs du site
     }
 

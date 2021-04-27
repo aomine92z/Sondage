@@ -5,6 +5,7 @@
  */
 package S_Fiches;
 
+import sondage.Site_sondage;
 import sondage.Teacher;
 
 /**
@@ -116,8 +117,8 @@ public class S_InscriptionEns extends javax.swing.JDialog {
     private void bValiderInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderInscriptionActionPerformed
         String nouveauEmail = tfEmail.getText();
         String nouveauMdp = tfMdp.getText();
-        Teacher t = new Teacher(nouveauEmail, nouveauMdp);
-        
+        Site_sondage s = ((S_Accueil) this.getParent()).getSite();
+        s.ajouterNouveauProf(nouveauEmail, nouveauMdp);
     }//GEN-LAST:event_bValiderInscriptionActionPerformed
 
     /**

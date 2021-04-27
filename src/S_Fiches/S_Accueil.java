@@ -5,22 +5,25 @@
  */
 package S_Fiches;
 
+import sondage.Site_sondage;
+
 /**
  *
  * @author theobaptiste
  */
-public class S_Acceuil extends javax.swing.JFrame {
+public class S_Accueil extends javax.swing.JFrame {
     
     private S_Enseignant fichEnseignant;
     private S_Etudiant fichEtudiant;
-    
+    private Site_sondage monSite;
     /**
      * Creates new form S_Acceuil
      */
-    public S_Acceuil() {
+    public S_Accueil() {
         initComponents();
         fichEtudiant = new S_Etudiant(this, false );
         fichEnseignant = new S_Enseignant(this, false );
+        monSite = new Site_sondage();
         
     }
 //    public S_InscriptionEns getfichInscriptionEns() {
@@ -109,6 +112,9 @@ public class S_Acceuil extends javax.swing.JFrame {
        fichEnseignant.setVisible(true);
     }//GEN-LAST:event_bEnseignantActionPerformed
 
+    public Site_sondage getSite(){
+        return monSite;
+    }
     /**
      * @param args the command line arguments
      */
@@ -126,20 +132,21 @@ public class S_Acceuil extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(S_Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S_Accueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(S_Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S_Accueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(S_Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S_Accueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(S_Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S_Accueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new S_Acceuil().setVisible(true);
+                new S_Accueil().setVisible(true);
             }
         });
     }

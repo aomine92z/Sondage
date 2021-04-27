@@ -5,6 +5,7 @@
  */
 package S_Fiches;
 
+import sondage.Site_sondage;
 import sondage.Teacher;
 
 /**
@@ -130,9 +131,10 @@ public class S_ConnexionEns extends javax.swing.JDialog {
     private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
         String Email = tfEmail.getText();
         String Mdp = tfMdp.getText();
-        
-        Teacher t = new Teacher(Email, Mdp);
-        
+        Site_sondage s = ((S_Accueil) this.getParent()).getSite();
+        if (s.verifConnexion(Email, Mdp)){
+            
+        }
     }//GEN-LAST:event_bValiderActionPerformed
 
     /**

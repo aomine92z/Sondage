@@ -58,12 +58,9 @@ public class Teacher {
     }
     
     // méthode pour s'inscrire
-    public Teacher inscription(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("IDENTIFIANT (adresse mail professionnelle) : ");
-        this.mail = sc.nextLine();
-        System.out.println("MOT DE PASSE : ");
-        this.password = sc.nextLine();
+    public Teacher inscription(String email, String motdeP){
+        this.mail = email;
+        this.password = motdeP;
         return this;
     }
     
