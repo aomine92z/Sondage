@@ -5,6 +5,9 @@
  */
 package S_Fiches;
 
+import sondage.Site_sondage;
+import sondage.Teacher;
+
 /**
  *
  * @author theobaptiste
@@ -28,21 +31,149 @@ public class S_AjouterS extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
+        jLabel1 = new javax.swing.JLabel();
+        tfNomS = new javax.swing.JTextField();
+        rbAnoOui = new javax.swing.JRadioButton();
+        rbAnoNon = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        rbAffOui = new javax.swing.JRadioButton();
+        rbAffNon = new javax.swing.JRadioButton();
+        bValider = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setText("Nom du sondage :");
+
+        buttonGroup1.add(rbAnoOui);
+        rbAnoOui.setText("Oui");
+        rbAnoOui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAnoOuiActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbAnoNon);
+        rbAnoNon.setText("Non");
+
+        jLabel2.setText("Participation anonyme ?");
+
+        jLabel3.setText("Affichage en temps réel ?");
+
+        buttonGroup2.add(rbAffOui);
+        rbAffOui.setText("Oui");
+
+        buttonGroup2.add(rbAffNon);
+        rbAffNon.setText("Non");
+
+        bValider.setText("Valider");
+        bValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bValiderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbAnoNon)
+                                    .addComponent(rbAnoOui)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbAffNon)
+                                    .addComponent(rbAffOui))))))
+                .addContainerGap(146, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bValider)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(rbAnoOui)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbAnoNon)))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(rbAffOui))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbAffNon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bValider)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rbAnoOuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAnoOuiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbAnoOuiActionPerformed
+
+    private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
+        String NomS = tfNomS.getText();
+        
+        if (rbAnoOui.isSelected()==true  && rbAffOui.isSelected()==true ){
+            boolean anonyme = true ;
+            boolean affichage = true ;
+            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
+            s.creerSondage(NomS, anonyme, affichage);
+        }
+        else if  (rbAnoOui.isSelected()==true  && rbAffNon.isSelected()==true ){
+            boolean anonyme = true ;
+            boolean affichage = false ;
+            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
+            s.creerSondage(NomS, anonyme, affichage);            
+        }
+        else if  (rbAnoNon.isSelected()==true  && rbAffOui.isSelected()==true ){
+            boolean anonyme = false ;
+            boolean affichage = true ;
+            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
+            s.creerSondage(NomS, anonyme, affichage);            
+        }
+        else  {
+            boolean anonyme = false ;
+            boolean affichage = false ;
+            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
+            s.creerSondage(NomS, anonyme, affichage);        
+    }
+    }//GEN-LAST:event_bValiderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +218,21 @@ public class S_AjouterS extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bValider;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JRadioButton rbAffNon;
+    private javax.swing.JRadioButton rbAffOui;
+    private javax.swing.JRadioButton rbAnoNon;
+    private javax.swing.JRadioButton rbAnoOui;
+    private javax.swing.JTextField tfNomS;
     // End of variables declaration//GEN-END:variables
 }
