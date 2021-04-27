@@ -13,13 +13,14 @@ import sondage.Teacher;
  * @author theobaptiste
  */
 public class S_InscriptionEns extends javax.swing.JDialog {
-
+    private S_MenuProf fichMenuProf;
     /**
      * Creates new form S_InscriptionEns
      */
     public S_InscriptionEns(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fichMenuProf = new S_MenuProf(parent, false);        
     }
 
     /**
@@ -119,6 +120,8 @@ public class S_InscriptionEns extends javax.swing.JDialog {
         String nouveauMdp = tfMdp.getText();
         Site_sondage s = ((S_Accueil) this.getParent()).getSite();
         s.ajouterNouveauProf(nouveauEmail, nouveauMdp);
+        this.setVisible(false); //this = fiche dacceuil rendre invisible
+        fichMenuProf.setVisible(true);
     }//GEN-LAST:event_bValiderInscriptionActionPerformed
 
     /**

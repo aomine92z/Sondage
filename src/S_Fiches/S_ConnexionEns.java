@@ -13,13 +13,15 @@ import sondage.Teacher;
  * @author theobaptiste
  */
 public class S_ConnexionEns extends javax.swing.JDialog {
-
+    
+    private S_MenuProf fichMenuProf;
     /**
      * Creates new form S_ConnexionEns
      */
     public S_ConnexionEns(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fichMenuProf = new S_MenuProf(parent, false);
     }
 
     /**
@@ -132,7 +134,9 @@ public class S_ConnexionEns extends javax.swing.JDialog {
         String Email = tfEmail.getText();
         String Mdp = tfMdp.getText();
         Site_sondage s = ((S_Accueil) this.getParent()).getSite();
-        if (s.verifConnexion(Email, Mdp)){
+        if (s.verifConnexion(Email, Mdp)== true){
+            this.setVisible(false); //this = fiche dacceuil rendre invisible
+            fichMenuProf.setVisible(true);
             
         }
     }//GEN-LAST:event_bValiderActionPerformed
