@@ -5,6 +5,8 @@
  */
 package S_Fiches;
 
+import javax.swing.JOptionPane;
+import sondage.Questionnaire;
 import sondage.Site_sondage;
 import sondage.Teacher;
 
@@ -13,13 +15,14 @@ import sondage.Teacher;
  * @author theobaptiste
  */
 public class S_AjouterS extends javax.swing.JDialog {
-
+    private S_QCM_Question fichQCMQuestion;
     /**
      * Creates new form S_AjouterS
      */
     public S_AjouterS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fichQCMQuestion = new S_QCM_Question(parent, false);
     }
 
     /**
@@ -153,25 +156,59 @@ public class S_AjouterS extends javax.swing.JDialog {
             boolean anonyme = true ;
             boolean affichage = true ;
             Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            s.creerSondage(NomS, anonyme, affichage);
+            //Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
+            
+            String P = JOptionPane.showInputDialog(this, "Rentrez le nombre de question que vous souhaitez poser", "QUESTION", JOptionPane.QUESTION_MESSAGE);
+            int nbrQuestions = Integer.valueOf(P);
+            for (int i=0; i<nbrQuestions; i++){
+                this.setVisible(false); //this = fiche dacceuil rendre invisible
+                fichQCMQuestion.setVisible(true);
+                if (i==3){
+                    fichQCMQuestion.setVisible(false);
+                }
+            }
+            
+            //JOptionPane.showInputDialog(this, P , "le titre", JOptionPane.INFORMATION_MESSAGE);
+            // s.creerSondage(NomS, anonyme, affichage, profRespo);
+            //JOptionPane.showInputDialog(this, "le message", "le titre", JOptionPane.QUESTION_MESSAGE);
+            //for (int i=0; i<)
+//            Questionnaire sondageCree = null;
+//            sondageCree = s.searchSondage(NomS, profRespo.getMail());
+//            int codeSondage = sondageCree.getCode();    
+
         }
         else if  (rbAnoOui.isSelected()==true  && rbAffNon.isSelected()==true ){
             boolean anonyme = true ;
             boolean affichage = false ;
             Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            s.creerSondage(NomS, anonyme, affichage);            
+            Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
+            s.creerSondage(NomS, anonyme, affichage, profRespo); 
+            Questionnaire sondageCree = null;
+            sondageCree = s.searchSondage(NomS, profRespo.getMail());
+            int codeSondage = sondageCree.getCode();    
+            JOptionPane.showMessageDialog(this, codeSondage, "Code Sondage", JOptionPane.INFORMATION_MESSAGE);
         }
         else if  (rbAnoNon.isSelected()==true  && rbAffOui.isSelected()==true ){
             boolean anonyme = false ;
             boolean affichage = true ;
             Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            s.creerSondage(NomS, anonyme, affichage);            
+            Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
+            s.creerSondage(NomS, anonyme, affichage, profRespo);   
+            Questionnaire sondageCree = null;
+            sondageCree = s.searchSondage(NomS, profRespo.getMail());
+            int codeSondage = sondageCree.getCode();    
+            JOptionPane.showMessageDialog(this, codeSondage, "Code Sondage", JOptionPane.INFORMATION_MESSAGE);
         }
         else  {
             boolean anonyme = false ;
             boolean affichage = false ;
             Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            s.creerSondage(NomS, anonyme, affichage);        
+            Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
+            s.creerSondage(NomS, anonyme, affichage, profRespo);  
+            Questionnaire sondageCree = null;
+            sondageCree = s.searchSondage(NomS, profRespo.getMail());
+            int codeSondage = sondageCree.getCode();    
+            JOptionPane.showMessageDialog(this, codeSondage, "Code Sondage", JOptionPane.INFORMATION_MESSAGE);
     }
     }//GEN-LAST:event_bValiderActionPerformed
 

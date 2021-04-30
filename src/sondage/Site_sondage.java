@@ -32,7 +32,19 @@ public class Site_sondage {
     
     // autres méthodes 
     
-
+    public Questionnaire searchSondage(String nameProf, String nameSondage){
+        for (int i=0; i<QuestList.size(); i++){
+            if (nameSondage.equals(QuestList.get(i).getName())){
+                for (int j=0; j<ProfList.size(); j++){
+                    if(nameProf.equals(ProfList.get(i).getMail())){
+                        return QuestList.get(i);
+                    }
+                }
+                
+            }
+        }
+        return null;
+    }
     
     //méthode pour valider la connexion d'un prof
     public boolean verifConnexion(String nameUser, String vPassword){
@@ -79,7 +91,7 @@ public class Site_sondage {
     }
 
     //méthode pour créer un sondage
-    public void creerSondage(String vNomS, boolean vanonyme, boolean vaffichage){
+    public void creerSondage(String vNomS, boolean vanonyme, boolean vaffichage, Teacher teache){
         System.out.println("\nAJOUT D'UN SONDAGE : \n");
 
         // le professeur donne un nom au sondage
@@ -104,12 +116,12 @@ public class Site_sondage {
 //        int choix2 = sc1.nextInt();
 //        if (choix2==1){
 //            affichage = true;
-        }
+ //       }
         Random rand = new Random();
         int nouvCode = rand.nextInt(90000) + 10000;
         
         // création du nouveau sondage avec les données transmises par le professeur
-        Questionnaire nouveauQuestionnaire = new Questionnaire(vNomS,  new <Question> ArrayList(), new <String> ArrayList(), vanonyme, vaffichage, nouvCode);
+        Questionnaire nouveauQuestionnaire = new Questionnaire(vNomS,teache,  new <Question> ArrayList(), new <String> ArrayList(), vanonyme, vaffichage, nouvCode);
 
         // ajouter des questions au questionnaire
         nouveauQuestionnaire.ajouterQuestion();

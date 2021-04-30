@@ -15,6 +15,7 @@ import sondage.Teacher;
 public class S_ConnexionEns extends javax.swing.JDialog {
     
     private S_MenuProf fichMenuProf;
+    private Teacher prof_connecte;
     /**
      * Creates new form S_ConnexionEns
      */
@@ -137,10 +138,13 @@ public class S_ConnexionEns extends javax.swing.JDialog {
         if (s.verifConnexion(Email, Mdp)== true){
             this.setVisible(false); //this = fiche dacceuil rendre invisible
             fichMenuProf.setVisible(true);
-            
+            prof_connecte = new Teacher (Email, Mdp);
         }
     }//GEN-LAST:event_bValiderActionPerformed
 
+    public Teacher getProfConnecte(){
+        return prof_connecte;
+    }
     /**
      * @param args the command line arguments
      */
