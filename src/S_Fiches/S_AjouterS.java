@@ -41,19 +41,48 @@ public class S_AjouterS extends javax.swing.JDialog {
         buttonGroup5 = new javax.swing.ButtonGroup();
         buttonGroup6 = new javax.swing.ButtonGroup();
         buttonGroup7 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        tfNomS = new javax.swing.JTextField();
+        pDebutS = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         rbAnoOui = new javax.swing.JRadioButton();
         rbAnoNon = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        tfNomS = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         rbAffOui = new javax.swing.JRadioButton();
         rbAffNon = new javax.swing.JRadioButton();
         bValider = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        tfNbresQ = new javax.swing.JTextField();
+        rbQCM = new javax.swing.JRadioButton();
+        rbQOuverte = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        pQCM = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        tfRep1 = new javax.swing.JTextField();
+        tfRep2 = new javax.swing.JTextField();
+        tfRep3 = new javax.swing.JTextField();
+        tfRep4 = new javax.swing.JTextField();
+        rbRep1 = new javax.swing.JRadioButton();
+        rbRep2 = new javax.swing.JRadioButton();
+        rbRep3 = new javax.swing.JRadioButton();
+        rbRep4 = new javax.swing.JRadioButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        bQCMSuivante = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        tfQCM = new javax.swing.JTextField();
+        pQOuverte = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        tfRepQO = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        bQOSuivante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Nom du sondage :");
+        jLabel2.setText("Participation anonyme ?");
 
         buttonGroup1.add(rbAnoOui);
         rbAnoOui.setText("Oui");
@@ -66,7 +95,7 @@ public class S_AjouterS extends javax.swing.JDialog {
         buttonGroup1.add(rbAnoNon);
         rbAnoNon.setText("Non");
 
-        jLabel2.setText("Participation anonyme ?");
+        jLabel1.setText("Nom du sondage :");
 
         jLabel3.setText("Affichage en temps réel ?");
 
@@ -83,63 +112,276 @@ public class S_AjouterS extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setText("Nombres de questions :");
+
+        tfNbresQ.setToolTipText("");
+
+        buttonGroup3.add(rbQCM);
+        rbQCM.setText("QCM");
+
+        buttonGroup3.add(rbQOuverte);
+        rbQOuverte.setText("Question ouverte ");
+
+        jLabel5.setText("Quel type de questions voullez-vous ?");
+
+        jLabel6.setText("Réponse 1");
+
+        jLabel7.setText("Réponse 2");
+
+        jLabel8.setText("Réponse 3");
+
+        jLabel9.setText("Réponse 4");
+
+        jLabel10.setText("Cochez la bonne réponse ");
+
+        jLabel11.setText("QCM");
+
+        bQCMSuivante.setText("Question Suivante");
+        bQCMSuivante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQCMSuivanteActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Rentrez la question : ");
+
+        javax.swing.GroupLayout pQCMLayout = new javax.swing.GroupLayout(pQCM);
+        pQCM.setLayout(pQCMLayout);
+        pQCMLayout.setHorizontalGroup(
+            pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pQCMLayout.createSequentialGroup()
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pQCMLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pQCMLayout.createSequentialGroup()
+                                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pQCMLayout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfRep4))
+                                    .addGroup(pQCMLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfRep2))
+                                    .addGroup(pQCMLayout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfRep3))
+                                    .addGroup(pQCMLayout.createSequentialGroup()
+                                        .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel6))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tfRep1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbRep1)
+                                    .addComponent(rbRep2)
+                                    .addComponent(rbRep3)
+                                    .addComponent(rbRep4)))
+                            .addGroup(pQCMLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfQCM, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pQCMLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(bQCMSuivante)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pQCMLayout.setVerticalGroup(
+            pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pQCMLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel11)
+                .addGap(13, 13, 13)
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfQCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tfRep1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbRep1))
+                .addGap(18, 18, 18)
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tfRep2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbRep2))
+                .addGap(18, 18, 18)
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfRep3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rbRep3)))
+                .addGap(18, 18, 18)
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tfRep4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbRep4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bQCMSuivante)
+                    .addComponent(jLabel10))
+                .addGap(14, 14, 14))
+        );
+
+        jLabel13.setText("Rentrez la question : ");
+
+        jLabel14.setText("Question Ouverte");
+
+        bQOSuivante.setText("Question suivante");
+        bQOSuivante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQOSuivanteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pQOuverteLayout = new javax.swing.GroupLayout(pQOuverte);
+        pQOuverte.setLayout(pQOuverteLayout);
+        pQOuverteLayout.setHorizontalGroup(
+            pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pQOuverteLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addGroup(pQOuverteLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfRepQO, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bQOSuivante)
+                .addGap(84, 84, 84))
+        );
+        pQOuverteLayout.setVerticalGroup(
+            pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pQOuverteLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel14)
+                .addGap(76, 76, 76)
+                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tfRepQO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bQOSuivante)
+                .addGap(39, 39, 39))
+        );
+
+        javax.swing.GroupLayout pDebutSLayout = new javax.swing.GroupLayout(pDebutS);
+        pDebutS.setLayout(pDebutSLayout);
+        pDebutSLayout.setHorizontalGroup(
+            pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pDebutSLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pDebutSLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pDebutSLayout.createSequentialGroup()
+                                .addComponent(rbAffOui)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(pDebutSLayout.createSequentialGroup()
+                                .addComponent(rbAffNon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bValider)
+                                .addGap(21, 21, 21))))
+                    .addGroup(pDebutSLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pDebutSLayout.createSequentialGroup()
+                                .addComponent(rbAnoOui)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pDebutSLayout.createSequentialGroup()
+                                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pDebutSLayout.createSequentialGroup()
+                                        .addComponent(rbAnoNon)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel5)))
+                                .addGap(18, 18, 18)
+                                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbQOuverte)
+                                    .addComponent(rbQCM))
+                                .addGap(47, 47, 47))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(tfNbresQ, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
+            .addGroup(pDebutSLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(pQOuverte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pDebutSLayout.setVerticalGroup(
+            pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pDebutSLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tfNbresQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(rbAnoOui))
+                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pDebutSLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(rbAnoNon)
+                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pDebutSLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rbAffOui)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bValider)
+                            .addComponent(rbAffNon)))
+                    .addGroup(pDebutSLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(rbQCM)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbQOuverte)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 40, Short.MAX_VALUE)
+                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pQCM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pQOuverte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbAnoNon)
-                                    .addComponent(rbAnoOui)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbAffNon)
-                                    .addComponent(rbAffOui))))))
-                .addContainerGap(146, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bValider)
-                .addGap(19, 19, 19))
+            .addComponent(pDebutS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(rbAnoOui)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbAnoNon)))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(rbAffOui))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbAffNon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bValider)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pDebutS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,23 +393,18 @@ public class S_AjouterS extends javax.swing.JDialog {
 
     private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
         String NomS = tfNomS.getText();
-        
+
         if (rbAnoOui.isSelected()==true  && rbAffOui.isSelected()==true ){
             boolean anonyme = true ;
             boolean affichage = true ;
             Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
             //Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
             
-            String P = JOptionPane.showInputDialog(this, "Rentrez le nombre de question que vous souhaitez poser", "QUESTION", JOptionPane.QUESTION_MESSAGE);
+            String P = tfNbresQ.getText();
             int nbrQuestions = Integer.valueOf(P);
-            for (int i=0; i<nbrQuestions; i++){
-                this.setVisible(false); //this = fiche dacceuil rendre invisible
-                fichQCMQuestion.setVisible(true);
-                if (i==3){
-                    fichQCMQuestion.setVisible(false);
-                }
-            }
+
             
+        }
             //JOptionPane.showInputDialog(this, P , "le titre", JOptionPane.INFORMATION_MESSAGE);
             // s.creerSondage(NomS, anonyme, affichage, profRespo);
             //JOptionPane.showInputDialog(this, "le message", "le titre", JOptionPane.QUESTION_MESSAGE);
@@ -176,7 +413,7 @@ public class S_AjouterS extends javax.swing.JDialog {
 //            sondageCree = s.searchSondage(NomS, profRespo.getMail());
 //            int codeSondage = sondageCree.getCode();    
 
-        }
+        
         else if  (rbAnoOui.isSelected()==true  && rbAffNon.isSelected()==true ){
             boolean anonyme = true ;
             boolean affichage = false ;
@@ -211,6 +448,19 @@ public class S_AjouterS extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, codeSondage, "Code Sondage", JOptionPane.INFORMATION_MESSAGE);
     }
     }//GEN-LAST:event_bValiderActionPerformed
+
+    private void bQCMSuivanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQCMSuivanteActionPerformed
+        // la faut que tu utilise les text field et button groupe pour enregistrer le qcm quelque part 
+        tfRep1.setText("        ");
+        tfRep2.setText("        ");
+        tfRep3.setText("        ");
+        tfRep4.setText("        ");
+        tfQCM.setText("         ");
+    }//GEN-LAST:event_bQCMSuivanteActionPerformed
+
+    private void bQOSuivanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQOSuivanteActionPerformed
+        tfRepQO.setText("        ");
+    }//GEN-LAST:event_bQOSuivanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,6 +505,8 @@ public class S_AjouterS extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bQCMSuivante;
+    private javax.swing.JButton bQOSuivante;
     private javax.swing.JButton bValider;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -264,12 +516,39 @@ public class S_AjouterS extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel pDebutS;
+    private javax.swing.JPanel pQCM;
+    private javax.swing.JPanel pQOuverte;
     private javax.swing.JRadioButton rbAffNon;
     private javax.swing.JRadioButton rbAffOui;
     private javax.swing.JRadioButton rbAnoNon;
     private javax.swing.JRadioButton rbAnoOui;
+    private javax.swing.JRadioButton rbQCM;
+    private javax.swing.JRadioButton rbQOuverte;
+    private javax.swing.JRadioButton rbRep1;
+    private javax.swing.JRadioButton rbRep2;
+    private javax.swing.JRadioButton rbRep3;
+    private javax.swing.JRadioButton rbRep4;
+    private javax.swing.JTextField tfNbresQ;
     private javax.swing.JTextField tfNomS;
+    private javax.swing.JTextField tfQCM;
+    private javax.swing.JTextField tfRep1;
+    private javax.swing.JTextField tfRep2;
+    private javax.swing.JTextField tfRep3;
+    private javax.swing.JTextField tfRep4;
+    private javax.swing.JTextField tfRepQO;
     // End of variables declaration//GEN-END:variables
 }
