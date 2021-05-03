@@ -5,8 +5,15 @@
  */
 package S_Fiches;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import javax.swing.JOptionPane;
+import sondage.Openquestion;
+import sondage.Qcm;
+import sondage.Question;
 import sondage.Questionnaire;
+import sondage.Reponse;
 import sondage.Site_sondage;
 import sondage.Teacher;
 
@@ -15,14 +22,22 @@ import sondage.Teacher;
  * @author theobaptiste
  */
 public class S_AjouterS extends javax.swing.JDialog {
-    private S_QCM_Question fichQCMQuestion;
+    
+    private List<String> reponse = new ArrayList<String>();
+    private boolean anonyme;
+    private boolean affichageTempsReel;
+    private List<Question> Questions = new ArrayList<Question>(); //collection de questions du questionnaire
+    private List<String> Participants = new ArrayList<String>(); 
+    private List<Integer> Scores = new ArrayList<Integer>();
+    private String nomSondage;
+    private int compteurRep = 0; 
+
     /**
      * Creates new form S_AjouterS
      */
     public S_AjouterS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        fichQCMQuestion = new S_QCM_Question(parent, false);
     }
 
     /**
@@ -50,35 +65,21 @@ public class S_AjouterS extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         rbAffOui = new javax.swing.JRadioButton();
         rbAffNon = new javax.swing.JRadioButton();
-        bValider = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        tfNbresQ = new javax.swing.JTextField();
-        rbQCM = new javax.swing.JRadioButton();
-        rbQOuverte = new javax.swing.JRadioButton();
-        jLabel5 = new javax.swing.JLabel();
         pQCM = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        tfRep1 = new javax.swing.JTextField();
-        tfRep2 = new javax.swing.JTextField();
-        tfRep3 = new javax.swing.JTextField();
-        tfRep4 = new javax.swing.JTextField();
-        rbRep1 = new javax.swing.JRadioButton();
-        rbRep2 = new javax.swing.JRadioButton();
-        rbRep3 = new javax.swing.JRadioButton();
-        rbRep4 = new javax.swing.JRadioButton();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        bQCMSuivante = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         tfQCM = new javax.swing.JTextField();
         pQOuverte = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        tfRepQO = new javax.swing.JTextField();
+        tfQO = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         bQOSuivante = new javax.swing.JButton();
+        tfAjoutRep = new javax.swing.JButton();
+        bQCMSuivante = new javax.swing.JButton();
+        validerQuestionnaire = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        validerParticipant = new javax.swing.JButton();
+        tfParticipant = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,139 +95,41 @@ public class S_AjouterS extends javax.swing.JDialog {
 
         buttonGroup1.add(rbAnoNon);
         rbAnoNon.setText("Non");
+        rbAnoNon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAnoNonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nom du sondage :");
+
+        tfNomS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomSActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Affichage en temps réel ?");
 
         buttonGroup2.add(rbAffOui);
         rbAffOui.setText("Oui");
+        rbAffOui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAffOuiActionPerformed(evt);
+            }
+        });
 
         buttonGroup2.add(rbAffNon);
         rbAffNon.setText("Non");
-
-        bValider.setText("Valider");
-        bValider.addActionListener(new java.awt.event.ActionListener() {
+        rbAffNon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bValiderActionPerformed(evt);
+                rbAffNonActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("Nombres de questions :");
-
-        tfNbresQ.setToolTipText("");
-
-        buttonGroup3.add(rbQCM);
-        rbQCM.setText("QCM");
-
-        buttonGroup3.add(rbQOuverte);
-        rbQOuverte.setText("Question ouverte ");
-
-        jLabel5.setText("Quel type de questions voullez-vous ?");
-
-        jLabel6.setText("Réponse 1");
-
-        jLabel7.setText("Réponse 2");
-
-        jLabel8.setText("Réponse 3");
-
-        jLabel9.setText("Réponse 4");
-
-        jLabel10.setText("Cochez la bonne réponse ");
 
         jLabel11.setText("QCM");
 
-        bQCMSuivante.setText("Question Suivante");
-        bQCMSuivante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bQCMSuivanteActionPerformed(evt);
-            }
-        });
-
         jLabel12.setText("Rentrez la question : ");
-
-        javax.swing.GroupLayout pQCMLayout = new javax.swing.GroupLayout(pQCM);
-        pQCM.setLayout(pQCMLayout);
-        pQCMLayout.setHorizontalGroup(
-            pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pQCMLayout.createSequentialGroup()
-                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pQCMLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pQCMLayout.createSequentialGroup()
-                                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(pQCMLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tfRep4))
-                                    .addGroup(pQCMLayout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tfRep2))
-                                    .addGroup(pQCMLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tfRep3))
-                                    .addGroup(pQCMLayout.createSequentialGroup()
-                                        .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel6))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tfRep1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbRep1)
-                                    .addComponent(rbRep2)
-                                    .addComponent(rbRep3)
-                                    .addComponent(rbRep4)))
-                            .addGroup(pQCMLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfQCM, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pQCMLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(bQCMSuivante)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pQCMLayout.setVerticalGroup(
-            pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pQCMLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel11)
-                .addGap(13, 13, 13)
-                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfQCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(tfRep1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbRep1))
-                .addGap(18, 18, 18)
-                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(tfRep2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbRep2))
-                .addGap(18, 18, 18)
-                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfRep3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rbRep3)))
-                .addGap(18, 18, 18)
-                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(tfRep4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbRep4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bQCMSuivante)
-                    .addComponent(jLabel10))
-                .addGap(14, 14, 14))
-        );
 
         jLabel13.setText("Rentrez la question : ");
 
@@ -244,32 +147,115 @@ public class S_AjouterS extends javax.swing.JDialog {
         pQOuverteLayout.setHorizontalGroup(
             pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pQOuverteLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addGroup(pQOuverteLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfRepQO, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfQO, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bQOSuivante)
-                .addGap(84, 84, 84))
+                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(74, 74, 74))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
+                        .addComponent(bQOSuivante)
+                        .addGap(55, 55, 55))))
         );
         pQOuverteLayout.setVerticalGroup(
             pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pQOuverteLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel14)
-                .addGap(76, 76, 76)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(tfRepQO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfQO, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
                 .addComponent(bQOSuivante)
-                .addGap(39, 39, 39))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        tfAjoutRep.setText("Ajouter une réponse");
+        tfAjoutRep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfAjoutRepActionPerformed(evt);
+            }
+        });
+
+        bQCMSuivante.setText("Question Suivante");
+        bQCMSuivante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQCMSuivanteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pQCMLayout = new javax.swing.GroupLayout(pQCM);
+        pQCM.setLayout(pQCMLayout);
+        pQCMLayout.setHorizontalGroup(
+            pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pQCMLayout.createSequentialGroup()
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pQCMLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addGap(101, 101, 101))
+                    .addGroup(pQCMLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfQCM, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pQCMLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pQCMLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(bQCMSuivante))
+                                    .addComponent(tfAjoutRep, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, Short.MAX_VALUE)))
+                .addComponent(pQOuverte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+        );
+        pQCMLayout.setVerticalGroup(
+            pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQCMLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pQCMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfQCM, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfAjoutRep)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bQCMSuivante)
+                .addContainerGap(12, Short.MAX_VALUE))
+            .addComponent(pQOuverte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        validerQuestionnaire.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        validerQuestionnaire.setText("Valider et mettre fin au questionnaire");
+        validerQuestionnaire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerQuestionnaireActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Ajouter un participant :");
+
+        validerParticipant.setText("Valider");
+        validerParticipant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerParticipantActionPerformed(evt);
+            }
+        });
+
+        tfParticipant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfParticipantActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pDebutSLayout = new javax.swing.GroupLayout(pDebutS);
         pDebutS.setLayout(pDebutSLayout);
@@ -287,14 +273,7 @@ public class S_AjouterS extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(pDebutSLayout.createSequentialGroup()
                                 .addComponent(rbAffNon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bValider)
-                                .addGap(21, 21, 21))))
-                    .addGroup(pDebutSLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(94, 526, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -303,29 +282,28 @@ public class S_AjouterS extends javax.swing.JDialog {
                                 .addComponent(rbAnoOui)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pDebutSLayout.createSequentialGroup()
-                                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pDebutSLayout.createSequentialGroup()
-                                        .addComponent(rbAnoNon)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel5)))
+                                .addComponent(rbAnoNon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addGap(163, 163, 163))))
+                    .addGroup(pDebutSLayout.createSequentialGroup()
+                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pDebutSLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbQOuverte)
-                                    .addComponent(rbQCM))
-                                .addGap(47, 47, 47))))))
+                                .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(tfNbresQ, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
-            .addGroup(pDebutSLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(pQOuverte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(validerQuestionnaire)
+                    .addGroup(pDebutSLayout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(tfParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(validerParticipant)))
+                .addGap(38, 38, 38))
         );
         pDebutSLayout.setVerticalGroup(
             pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,40 +312,35 @@ public class S_AjouterS extends javax.swing.JDialog {
                 .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfNbresQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                .addGap(29, 29, 29)
                 .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(rbAnoOui))
+                .addGap(3, 3, 3)
                 .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pDebutSLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
                         .addComponent(rbAnoNon)
-                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pDebutSLayout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addComponent(jLabel3))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDebutSLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(validerParticipant)
+                                    .addComponent(tfParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(19, 19, 19)
                                 .addComponent(rbAffOui)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bValider)
-                            .addComponent(rbAffNon)))
+                        .addComponent(rbAffNon)
+                        .addGap(38, 38, 38)
+                        .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                        .addComponent(validerQuestionnaire, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))
                     .addGroup(pDebutSLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(rbQCM)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbQOuverte)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 40, Short.MAX_VALUE)
-                .addGroup(pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pQCM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pQOuverte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -381,86 +354,78 @@ public class S_AjouterS extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pDebutS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbAnoOuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAnoOuiActionPerformed
-        // TODO add your handling code here:
+        anonyme = true;
     }//GEN-LAST:event_rbAnoOuiActionPerformed
-
-    private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
-        String NomS = tfNomS.getText();
-
-        if (rbAnoOui.isSelected()==true  && rbAffOui.isSelected()==true ){
-            boolean anonyme = true ;
-            boolean affichage = true ;
-            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            //Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
-            
-            String P = tfNbresQ.getText();
-            int nbrQuestions = Integer.valueOf(P);
-
-            
-        }
-            //JOptionPane.showInputDialog(this, P , "le titre", JOptionPane.INFORMATION_MESSAGE);
-            // s.creerSondage(NomS, anonyme, affichage, profRespo);
-            //JOptionPane.showInputDialog(this, "le message", "le titre", JOptionPane.QUESTION_MESSAGE);
-            //for (int i=0; i<)
-//            Questionnaire sondageCree = null;
-//            sondageCree = s.searchSondage(NomS, profRespo.getMail());
-//            int codeSondage = sondageCree.getCode();    
-
-        
-        else if  (rbAnoOui.isSelected()==true  && rbAffNon.isSelected()==true ){
-            boolean anonyme = true ;
-            boolean affichage = false ;
-            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
-            s.creerSondage(NomS, anonyme, affichage, profRespo); 
-            Questionnaire sondageCree = null;
-            sondageCree = s.searchSondage(NomS, profRespo.getMail());
-            int codeSondage = sondageCree.getCode();    
-            JOptionPane.showMessageDialog(this, codeSondage, "Code Sondage", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if  (rbAnoNon.isSelected()==true  && rbAffOui.isSelected()==true ){
-            boolean anonyme = false ;
-            boolean affichage = true ;
-            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
-            s.creerSondage(NomS, anonyme, affichage, profRespo);   
-            Questionnaire sondageCree = null;
-            sondageCree = s.searchSondage(NomS, profRespo.getMail());
-            int codeSondage = sondageCree.getCode();    
-            JOptionPane.showMessageDialog(this, codeSondage, "Code Sondage", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else  {
-            boolean anonyme = false ;
-            boolean affichage = false ;
-            Site_sondage s = ((S_Accueil) this.getParent()).getSite(); 
-            Teacher profRespo = ((S_ConnexionEns) this.getParent()).getProfConnecte();
-            s.creerSondage(NomS, anonyme, affichage, profRespo);  
-            Questionnaire sondageCree = null;
-            sondageCree = s.searchSondage(NomS, profRespo.getMail());
-            int codeSondage = sondageCree.getCode();    
-            JOptionPane.showMessageDialog(this, codeSondage, "Code Sondage", JOptionPane.INFORMATION_MESSAGE);
-    }
-    }//GEN-LAST:event_bValiderActionPerformed
 
     private void bQCMSuivanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQCMSuivanteActionPerformed
         // la faut que tu utilise les text field et button groupe pour enregistrer le qcm quelque part 
-        tfRep1.setText("        ");
-        tfRep2.setText("        ");
-        tfRep3.setText("        ");
-        tfRep4.setText("        ");
+        String Question = tfQCM.getText();
+        Qcm nouvQcm = new Qcm (Question, reponse, Scores);
+        Questions.add(nouvQcm);
         tfQCM.setText("         ");
     }//GEN-LAST:event_bQCMSuivanteActionPerformed
 
     private void bQOSuivanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQOSuivanteActionPerformed
-        tfRepQO.setText("        ");
+        String Question = tfQO.getText();
+        Openquestion nouvOpenQ = new Openquestion (Question);
+        Questions.add(nouvOpenQ);
+        tfQO.setText("        ");
     }//GEN-LAST:event_bQOSuivanteActionPerformed
+
+    private void validerQuestionnaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerQuestionnaireActionPerformed
+        // TODO add your handling code here:
+        Random rand = new Random();
+        int CodeSondage = rand.nextInt(90000) + 10000;
+        Questionnaire nouveauSondage = new Questionnaire (nomSondage, S_ConnexionEns.getProfConnecte(), Questions, Participants, anonyme, affichageTempsReel, CodeSondage);
+        ((S_Accueil) this.getParent()).getSite().ajouterSondage(nouveauSondage);
+        JOptionPane.showInputDialog(this, "CODE DU SONDAGE", CodeSondage);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_validerQuestionnaireActionPerformed
+
+    private void tfAjoutRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAjoutRepActionPerformed
+        // TODO add your handling code here:
+        String RepAjoutee = JOptionPane.showInputDialog(this, "Rentrez une reponse possible.","Réponse numéro "+ compteurRep,JOptionPane.QUESTION_MESSAGE);
+        reponse.add(RepAjoutee);
+        Scores.add(0);
+    }//GEN-LAST:event_tfAjoutRepActionPerformed
+
+    private void rbAnoNonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAnoNonActionPerformed
+        anonyme = false;
+    }//GEN-LAST:event_rbAnoNonActionPerformed
+
+    private void rbAffOuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAffOuiActionPerformed
+        // TODO add your handling code here:
+        affichageTempsReel = true;
+    }//GEN-LAST:event_rbAffOuiActionPerformed
+
+    private void rbAffNonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAffNonActionPerformed
+        // TODO add your handling code here:
+        affichageTempsReel = false;
+    }//GEN-LAST:event_rbAffNonActionPerformed
+
+    private void tfNomSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomSActionPerformed
+        // TODO add your handling code here:
+        nomSondage = tfNomS.getText();
+    }//GEN-LAST:event_tfNomSActionPerformed
+
+    private void tfParticipantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfParticipantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfParticipantActionPerformed
+
+    private void validerParticipantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerParticipantActionPerformed
+        // TODO add your handling code here:
+        String participantSondage = tfParticipant.getText();
+        Participants.add(participantSondage);
+        tfParticipant.setText(null);
+    }//GEN-LAST:event_validerParticipantActionPerformed
 
     /**
      * @param args the command line arguments
@@ -507,7 +472,6 @@ public class S_AjouterS extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bQCMSuivante;
     private javax.swing.JButton bQOSuivante;
-    private javax.swing.JButton bValider;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -516,7 +480,6 @@ public class S_AjouterS extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -524,11 +487,6 @@ public class S_AjouterS extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel pDebutS;
     private javax.swing.JPanel pQCM;
     private javax.swing.JPanel pQOuverte;
@@ -536,19 +494,12 @@ public class S_AjouterS extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbAffOui;
     private javax.swing.JRadioButton rbAnoNon;
     private javax.swing.JRadioButton rbAnoOui;
-    private javax.swing.JRadioButton rbQCM;
-    private javax.swing.JRadioButton rbQOuverte;
-    private javax.swing.JRadioButton rbRep1;
-    private javax.swing.JRadioButton rbRep2;
-    private javax.swing.JRadioButton rbRep3;
-    private javax.swing.JRadioButton rbRep4;
-    private javax.swing.JTextField tfNbresQ;
+    private javax.swing.JButton tfAjoutRep;
     private javax.swing.JTextField tfNomS;
+    private javax.swing.JTextField tfParticipant;
     private javax.swing.JTextField tfQCM;
-    private javax.swing.JTextField tfRep1;
-    private javax.swing.JTextField tfRep2;
-    private javax.swing.JTextField tfRep3;
-    private javax.swing.JTextField tfRep4;
-    private javax.swing.JTextField tfRepQO;
+    private javax.swing.JTextField tfQO;
+    private javax.swing.JButton validerParticipant;
+    private javax.swing.JButton validerQuestionnaire;
     // End of variables declaration//GEN-END:variables
 }

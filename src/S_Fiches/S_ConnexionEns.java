@@ -15,7 +15,7 @@ import sondage.Teacher;
 public class S_ConnexionEns extends javax.swing.JDialog {
     
     private S_MenuProf fichMenuProf;
-    private Teacher prof_connecte;
+    private static Teacher prof_connecte;
     /**
      * Creates new form S_ConnexionEns
      */
@@ -158,15 +158,14 @@ public class S_ConnexionEns extends javax.swing.JDialog {
     private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
         String Email = tfEmail.getText();
         String Mdp = tfMdp.getText();
-        Site_sondage s = ((S_Accueil) this.getParent()).getSite();
-        if (s.verifConnexion(Email, Mdp)== true){
+        if (((S_Accueil) this.getParent()).getSite().verifConnexion(Email, Mdp)== true){
             this.setVisible(false); //this = fiche dacceuil rendre invisible
             fichMenuProf.setVisible(true);
             prof_connecte = new Teacher (Email, Mdp);
         }
     }//GEN-LAST:event_bValiderActionPerformed
 
-    public Teacher getProfConnecte(){
+    public static Teacher getProfConnecte(){
         return prof_connecte;
     }
     /**

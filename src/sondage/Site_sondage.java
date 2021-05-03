@@ -91,46 +91,9 @@ public class Site_sondage {
     }
 
     //méthode pour créer un sondage
-    public void creerSondage(String vNomS, boolean vanonyme, boolean vaffichage, Teacher teache){
-        System.out.println("\nAJOUT D'UN SONDAGE : \n");
-
-        // le professeur donne un nom au sondage
-        //Scanner scNom = new Scanner(System.in);
-
-        // le professeur choisit si la participation est anonyme
-//        System.out.println("PARTICIPATION ANONYME ?");
-//        System.out.println("1 - Oui");
-//        System.out.println("2 - NON");
-//        Scanner sc1 = new Scanner(System.in);
-//        int choix1 = sc1.nextInt();
-//        if (choix1==1){
-//            anonyme = true;
-//        }
-
-        // le professeur choisit si les résultats sont affichés en temps réel
-//        boolean affichage = false;
-//        System.out.println("AFFICHAGE DES RÉSULTATS EN TEMPS RÉEL ?");
-//        System.out.println("1 - Oui");
-//        System.out.println("2 - NON");
-//        Scanner sc2 = new Scanner(System.in);
-//        int choix2 = sc1.nextInt();
-//        if (choix2==1){
-//            affichage = true;
- //       }
-        Random rand = new Random();
-        int nouvCode = rand.nextInt(90000) + 10000;
-        
-        // création du nouveau sondage avec les données transmises par le professeur
-        Questionnaire nouveauQuestionnaire = new Questionnaire(vNomS,teache,  new <Question> ArrayList(), new <String> ArrayList(), vanonyme, vaffichage, nouvCode);
-
-        // ajouter des questions au questionnaire
-        nouveauQuestionnaire.ajouterQuestion();
-        // ajouter des participants au questionnaire
-        nouveauQuestionnaire.ajouterParticipant();
-
-        // ajoute le nouveau questionnaire à l'ensemble des sondages du site
-        QuestList.add(nouveauQuestionnaire);
-        }
+    public void ajouterSondage(Questionnaire sondageCree){
+        QuestList.add(sondageCree);
+    }
 
     public void afficherSondage(Teacher teache){
         // on parcourt les tableau des sondages

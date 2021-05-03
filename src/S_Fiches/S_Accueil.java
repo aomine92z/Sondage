@@ -15,7 +15,7 @@ public class S_Accueil extends javax.swing.JFrame {
     
     private S_Enseignant fichEnseignant;
     private S_Etudiant fichEtudiant;
-    private Site_sondage monSite;
+    private static Site_sondage monSite;
     /**
      * Creates new form S_Acceuil
      */
