@@ -13,14 +13,17 @@ import sondage.Teacher;
  * @author theobaptiste
  */
 public class S_InscriptionEns extends javax.swing.JDialog {
+    
+    private Site_sondage site;
     private S_ConnexionEns fichConnexionEns;
     /**
      * Creates new form S_InscriptionEns
      */
-    public S_InscriptionEns(java.awt.Frame parent, boolean modal) {
+    public S_InscriptionEns(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
-        fichConnexionEns = new S_ConnexionEns(parent, false);        
+        site=monSite;
+        fichConnexionEns = new S_ConnexionEns(parent, false, site);        
     }
 
     /**
@@ -182,7 +185,7 @@ public class S_InscriptionEns extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_InscriptionEns dialog = new S_InscriptionEns(new javax.swing.JFrame(), true);
+                S_InscriptionEns dialog = new S_InscriptionEns(new javax.swing.JFrame(), true, S_Accueil.getSite());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

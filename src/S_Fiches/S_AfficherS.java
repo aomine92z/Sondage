@@ -5,6 +5,8 @@
  */
 package S_Fiches;
 
+import sondage.Site_sondage;
+
 /**
  *
  * @author theobaptiste
@@ -14,9 +16,12 @@ public class S_AfficherS extends javax.swing.JDialog {
     /**
      * Creates new form S_AfficherS
      */
-    public S_AfficherS(java.awt.Frame parent, boolean modal) {
+    private Site_sondage site;
+    
+    public S_AfficherS(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
+        site = monSite;
     }
 
     /**
@@ -74,7 +79,7 @@ public class S_AfficherS extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_AfficherS dialog = new S_AfficherS(new javax.swing.JFrame(), true);
+                S_AfficherS dialog = new S_AfficherS(new javax.swing.JFrame(), true, S_Accueil.getSite());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

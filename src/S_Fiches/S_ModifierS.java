@@ -5,6 +5,10 @@
  */
 package S_Fiches;
 
+import javax.swing.JOptionPane;
+import sondage.Questionnaire;
+import sondage.Site_sondage;
+
 /**
  *
  * @author theobaptiste
@@ -14,9 +18,25 @@ public class S_ModifierS extends javax.swing.JDialog {
     /**
      * Creates new form S_ModifierS
      */
-    public S_ModifierS(java.awt.Frame parent, boolean modal) {
+    private Site_sondage site;
+    
+    public S_ModifierS(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
+        site = monSite;
+        AjouterQcm.setVisible(false);
+        ajouterQO.setVisible(false);
+        bAjoutParticipant.setVisible(false);
+        bNewN.setVisible(false);
+        bSuppSondage.setVisible(false);
+        tfAjoutQO.setVisible(false);
+        tfAjoutQcm.setVisible(false);
+        tfAjouterParticipant.setVisible(false);
+        tfNewN.setVisible(false);
+        validerAjoutParticipant.setVisible(false);
+        validerAjoutQCM1.setVisible(false);
+        validerAjoutQO.setVisible(false);
+        validerChangementNom.setVisible(false);
     }
 
     /**
@@ -28,78 +48,163 @@ public class S_ModifierS extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lSondage = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         tfNewN = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        bNewN = new javax.swing.JButton();
+        tfNomSondageModif = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        validerNomSondageModif = new javax.swing.JButton();
+        tfAjouterParticipant = new javax.swing.JTextField();
+        tfAjoutQO = new javax.swing.JTextField();
+        tfAjoutQcm = new javax.swing.JTextField();
+        validerAjoutQO = new javax.swing.JButton();
+        validerChangementNom = new javax.swing.JButton();
+        validerAjoutQCM1 = new javax.swing.JButton();
+        validerAjoutParticipant = new javax.swing.JButton();
+        jLabModifNom = new javax.swing.JLabel();
+        jLabAjoutParticipant = new javax.swing.JLabel();
+        jLabAjoutQcm = new javax.swing.JLabel();
+        jLabAjoutQO = new javax.swing.JLabel();
+        bSuppSondage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lSondage.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(lSondage);
+        jLabel1.setText("V euillez entrer le nom du sondage à modifier :");
 
-        jLabel1.setText("Choisissez votre sondage");
-
-        jLabel2.setText("choisissez le nouveau nom");
-
-        jButton1.setText("Supprimez le sondage");
-
-        bNewN.setText("Changez le nom du sondage");
-        bNewN.addActionListener(new java.awt.event.ActionListener() {
+        validerNomSondageModif.setText("Valider");
+        validerNomSondageModif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bNewNActionPerformed(evt);
+                validerNomSondageModifActionPerformed(evt);
             }
         });
+
+        validerAjoutQO.setText("✓");
+
+        validerChangementNom.setText("✓");
+
+        validerAjoutQCM1.setText("✓");
+
+        validerAjoutParticipant.setText("✓");
+
+        jLabModifNom.setText("Modifier le nom du sondage");
+
+        jLabAjoutParticipant.setText("Ajouter un participant");
+
+        jLabAjoutQcm.setText("Ajouter un QCM");
+
+        jLabAjoutQO.setText("Ajouter une question ouverte");
+
+        bSuppSondage.setText("Supprimer le sondage");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton1)
-                    .addComponent(tfNewN, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bNewN))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfNomSondageModif, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(validerNomSondageModif)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfAjoutQcm, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(validerAjoutQCM1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addComponent(tfAjoutQO, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(validerAjoutQO)
+                        .addGap(38, 38, 38))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfNewN, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(validerChangementNom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfAjouterParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(validerAjoutParticipant)
+                        .addGap(29, 29, 29))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabModifNom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabAjoutParticipant)
+                        .addGap(151, 151, 151))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabAjoutQcm)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabAjoutQO)
+                        .addGap(127, 127, 127))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(334, 334, 334)
+                .addComponent(bSuppSondage)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNomSondageModif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validerNomSondageModif))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabModifNom)
+                    .addComponent(jLabAjoutParticipant))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNewN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfAjouterParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validerChangementNom)
+                    .addComponent(validerAjoutParticipant))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(bSuppSondage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabAjoutQcm)
+                    .addComponent(jLabAjoutQO))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfNewN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bNewN)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfAjoutQO, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfAjoutQcm, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validerAjoutQO)
+                    .addComponent(validerAjoutQCM1))
+                .addGap(98, 98, 98))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bNewNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNewNActionPerformed
+    private void validerNomSondageModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerNomSondageModifActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bNewNActionPerformed
+        String nomSondageModif = tfNomSondageModif.getText();
+        Questionnaire sondageAmodifier = site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif);
+        if (sondageAmodifier == null){
+            JOptionPane.showMessageDialog(this, "Le nom rentré ne correspond à aucun sondage", "Erreur introuvable", WIDTH);
+        }
+        else {
+            jLabAjoutQcm.setVisible(true);
+            jLabAjoutQO.setVisible(true);
+            jLabAjoutParticipant.setVisible(true);
+            jLabModifNom.setVisible(true);
+            bSuppSondage.setVisible(true);
+            tfAjoutQO.setVisible(true);
+            tfAjoutQcm.setVisible(true);
+            tfAjouterParticipant.setVisible(true);
+            tfNewN.setVisible(true);
+            validerAjoutParticipant.setVisible(true);
+            validerAjoutQCM1.setVisible(true);
+            validerAjoutQO.setVisible(true);
+            validerChangementNom.setVisible(true);
+        }
+    }//GEN-LAST:event_validerNomSondageModifActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,7 +236,7 @@ public class S_ModifierS extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_ModifierS dialog = new S_ModifierS(new javax.swing.JFrame(), true);
+                S_ModifierS dialog = new S_ModifierS(new javax.swing.JFrame(), true, S_Accueil.getSite());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -144,12 +249,21 @@ public class S_ModifierS extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bNewN;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bSuppSondage;
+    private javax.swing.JLabel jLabAjoutParticipant;
+    private javax.swing.JLabel jLabAjoutQO;
+    private javax.swing.JLabel jLabAjoutQcm;
+    private javax.swing.JLabel jLabModifNom;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> lSondage;
+    private javax.swing.JTextField tfAjoutQO;
+    private javax.swing.JTextField tfAjoutQcm;
+    private javax.swing.JTextField tfAjouterParticipant;
     private javax.swing.JTextField tfNewN;
+    private javax.swing.JTextField tfNomSondageModif;
+    private javax.swing.JButton validerAjoutParticipant;
+    private javax.swing.JButton validerAjoutQCM1;
+    private javax.swing.JButton validerAjoutQO;
+    private javax.swing.JButton validerChangementNom;
+    private javax.swing.JButton validerNomSondageModif;
     // End of variables declaration//GEN-END:variables
 }

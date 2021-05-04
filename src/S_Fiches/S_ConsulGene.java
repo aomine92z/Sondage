@@ -5,6 +5,8 @@
  */
 package S_Fiches;
 
+import sondage.Site_sondage;
+
 /**
  *
  * @author theobaptiste
@@ -14,9 +16,12 @@ public class S_ConsulGene extends javax.swing.JDialog {
     /**
      * Creates new form S_ConsulGene
      */
-    public S_ConsulGene(java.awt.Frame parent, boolean modal) {
+    private Site_sondage site;
+    
+    public S_ConsulGene(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
+        site = monSite;
     }
 
     /**
@@ -114,7 +119,7 @@ public class S_ConsulGene extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_ConsulGene dialog = new S_ConsulGene(new javax.swing.JFrame(), true);
+                S_ConsulGene dialog = new S_ConsulGene(new javax.swing.JFrame(), true, S_Accueil.getSite());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

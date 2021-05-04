@@ -23,7 +23,8 @@ import sondage.Teacher;
  */
 public class S_AjouterS extends javax.swing.JDialog {
     
-    private S_MenuProf fichMenuProf2;
+//    private S_MenuProf fichMenuProf2;
+    private Site_sondage site;
     private List<String> reponse = new ArrayList<String>();
     private boolean anonyme;
     private boolean affichageTempsReel;
@@ -36,10 +37,11 @@ public class S_AjouterS extends javax.swing.JDialog {
     /**
      * Creates new form S_AjouterS
      */
-    public S_AjouterS(java.awt.Frame parent, boolean modal) {
+    public S_AjouterS(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
-        fichMenuProf2 = new S_MenuProf(parent, false);
+        site = monSite;
+//        fichMenuProf2 = new S_MenuProf(parent, false);
     }
 
     /**
@@ -386,10 +388,10 @@ public class S_AjouterS extends javax.swing.JDialog {
         Random rand = new Random();
         int CodeSondage = rand.nextInt(90000) + 10000;
         Questionnaire nouveauSondage = new Questionnaire (nomSondage, S_ConnexionEns.getProfConnecte(), Questions, Participants, anonyme, affichageTempsReel, CodeSondage);
-        ((S_Accueil) this.getParent()).getSite().ajouterSondage(nouveauSondage);
+        site.ajouterSondage(nouveauSondage);
         JOptionPane.showInputDialog(this, "CODE DU SONDAGE", CodeSondage);
         this.setVisible(false);
-        fichMenuProf2.setVisible(true);
+//        fichMenuProf2.setVisible(true);
     }//GEN-LAST:event_validerQuestionnaireActionPerformed
 
     private void tfAjoutRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAjoutRepActionPerformed
@@ -460,7 +462,7 @@ public class S_AjouterS extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_AjouterS dialog = new S_AjouterS(new javax.swing.JFrame(), true);
+                S_AjouterS dialog = new S_AjouterS(new javax.swing.JFrame(), true, S_Accueil.getSite());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

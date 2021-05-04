@@ -14,15 +14,17 @@ import sondage.Teacher;
  */
 public class S_ConnexionEns extends javax.swing.JDialog {
     
+    private Site_sondage site;
     private S_MenuProf fichMenuProf;
     private static Teacher prof_connecte;
     /**
      * Creates new form S_ConnexionEns
      */
-    public S_ConnexionEns(java.awt.Frame parent, boolean modal) {
+    public S_ConnexionEns(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
-        fichMenuProf = new S_MenuProf(parent, false);
+        site = monSite;
+        fichMenuProf = new S_MenuProf(parent, false, site);
     }
 
     /**
@@ -202,7 +204,7 @@ public class S_ConnexionEns extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_ConnexionEns dialog = new S_ConnexionEns(new javax.swing.JFrame(), true);
+                S_ConnexionEns dialog = new S_ConnexionEns(new javax.swing.JFrame(), true, S_Accueil.getSite());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

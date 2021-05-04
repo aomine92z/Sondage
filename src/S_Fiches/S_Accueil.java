@@ -21,9 +21,10 @@ public class S_Accueil extends javax.swing.JFrame {
      */
     public S_Accueil() {
         initComponents();
-        fichEtudiant = new S_Etudiant(this, false );
-        fichEnseignant = new S_Enseignant(this, false );
         monSite = new Site_sondage();
+        fichEtudiant = new S_Etudiant(this, false, monSite);
+        fichEnseignant = new S_Enseignant(this, false, monSite);
+        
         
     }
 //    public S_InscriptionEns getfichInscriptionEns() {
@@ -153,7 +154,7 @@ public class S_Accueil extends javax.swing.JFrame {
        fichEnseignant.setVisible(true);
     }//GEN-LAST:event_bEnseignantActionPerformed
 
-    public Site_sondage getSite(){
+    public static Site_sondage getSite(){
         return monSite;
     }
     /**

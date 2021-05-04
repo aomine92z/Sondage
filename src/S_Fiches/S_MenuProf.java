@@ -5,12 +5,15 @@
  */
 package S_Fiches;
 
+import sondage.Site_sondage;
+
 /**
  *
  * @author theobaptiste
  */
 public class S_MenuProf extends javax.swing.JDialog {
     
+    private Site_sondage site;
     private S_AfficherS fichAfficherS;
     private S_ModifierS fichModifierS;
     private S_AjouterS fichAjouterS;
@@ -21,14 +24,15 @@ public class S_MenuProf extends javax.swing.JDialog {
     /**
      * Creates new form S_MenuProf
      */
-    public S_MenuProf(java.awt.Frame parent, boolean modal) {
+    public S_MenuProf(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
-        fichAfficherS = new S_AfficherS(parent, false);
-        fichModifierS = new S_ModifierS(parent, false); 
-        fichAjouterS = new S_AjouterS(parent, false);
-        fichConsulEtu = new S_ConsulEtu(parent, false); 
-        fichConsulGene = new S_ConsulGene(parent, false);
+        site = monSite;
+        fichAfficherS = new S_AfficherS(parent, false, site);
+        fichModifierS = new S_ModifierS(parent, false, site); 
+        fichAjouterS = new S_AjouterS(parent, false, site);
+        fichConsulEtu = new S_ConsulEtu(parent, false, site); 
+        fichConsulGene = new S_ConsulGene(parent, false, site);
                  
     }
 
@@ -234,7 +238,7 @@ public class S_MenuProf extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_MenuProf dialog = new S_MenuProf(new javax.swing.JFrame(), true);
+                S_MenuProf dialog = new S_MenuProf(new javax.swing.JFrame(), true, S_Accueil.getSite());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
