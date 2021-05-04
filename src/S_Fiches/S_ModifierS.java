@@ -24,10 +24,10 @@ public class S_ModifierS extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         site = monSite;
-        AjouterQcm.setVisible(false);
-        ajouterQO.setVisible(false);
-        bAjoutParticipant.setVisible(false);
-        bNewN.setVisible(false);
+        jLabAjoutQcm.setVisible(false);
+        jLabAjoutQO.setVisible(false);
+        jLabAjoutParticipant.setVisible(false);
+        jLabModifNom.setVisible(false);
         bSuppSondage.setVisible(false);
         tfAjoutQO.setVisible(false);
         tfAjoutQcm.setVisible(false);
