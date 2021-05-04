@@ -23,6 +23,7 @@ import sondage.Teacher;
  */
 public class S_AjouterS extends javax.swing.JDialog {
     
+    private S_MenuProf fichMenuProf2;
     private List<String> reponse = new ArrayList<String>();
     private boolean anonyme;
     private boolean affichageTempsReel;
@@ -30,7 +31,7 @@ public class S_AjouterS extends javax.swing.JDialog {
     private List<String> Participants = new ArrayList<String>(); 
     private List<Integer> Scores = new ArrayList<Integer>();
     private String nomSondage;
-    private int compteurRep = 0; 
+    private int compteurRep = 1; 
 
     /**
      * Creates new form S_AjouterS
@@ -38,6 +39,7 @@ public class S_AjouterS extends javax.swing.JDialog {
     public S_AjouterS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fichMenuProf2 = new S_MenuProf(parent, false);
     }
 
     /**
@@ -387,12 +389,13 @@ public class S_AjouterS extends javax.swing.JDialog {
         ((S_Accueil) this.getParent()).getSite().ajouterSondage(nouveauSondage);
         JOptionPane.showInputDialog(this, "CODE DU SONDAGE", CodeSondage);
         this.setVisible(false);
-        
+        fichMenuProf2.setVisible(true);
     }//GEN-LAST:event_validerQuestionnaireActionPerformed
 
     private void tfAjoutRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAjoutRepActionPerformed
         // TODO add your handling code here:
         String RepAjoutee = JOptionPane.showInputDialog(this, "Rentrez une reponse possible.","Réponse numéro "+ compteurRep,JOptionPane.QUESTION_MESSAGE);
+        compteurRep+=1;
         reponse.add(RepAjoutee);
         Scores.add(0);
     }//GEN-LAST:event_tfAjoutRepActionPerformed

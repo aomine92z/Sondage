@@ -146,6 +146,10 @@ public class S_ConnexionEns extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public S_MenuProf getMenuProf(){
+        return fichMenuProf;
+    }
+    
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         this.setVisible(false);
         this.getParent().setVisible(true);//=fiche d'acceuil:// TODO add your handling code here:
