@@ -5,7 +5,13 @@
  */
 package S_Fiches;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import sondage.Question;
+import sondage.Questionnaire;
 import sondage.Site_sondage;
+import sondage.Teacher;
 
 /**
  *
@@ -17,6 +23,11 @@ public class S_AfficherS extends javax.swing.JDialog {
      * Creates new form S_AfficherS
      */
     private Site_sondage site;
+    private String nomSondageAffiche;
+    private List<String> Participants = new ArrayList<String>(); 
+    private List<Integer> Scores = new ArrayList<Integer>();
+    private List<String> reponse = new ArrayList<String>();
+    private List<Question> questions = new ArrayList<Question>();
     
     public S_AfficherS(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
@@ -33,48 +44,67 @@ public class S_AfficherS extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jLabel1 = new javax.swing.JLabel();
+        tfNomSondageModif = new javax.swing.JTextField();
+        validerNomSondageModif = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(823, 565));
 
-        jPanel2.setBackground(new java.awt.Color(220, 220, 253));
+        jLabel1.setText("V euillez entrer le nom du sondage à modifier :");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        validerNomSondageModif.setText("Valider");
+        validerNomSondageModif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerNomSondageModifActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfNomSondageModif, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(validerNomSondageModif))
+                    .addComponent(jLabel1))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNomSondageModif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validerNomSondageModif))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void validerNomSondageModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerNomSondageModifActionPerformed
+        // TODO add your handling code here:
+        nomSondageAffiche = tfNomSondageModif.getText();
+        Questionnaire sondageAafficher = site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageAffiche);
+        if (sondageAafficher == null){
+            JOptionPane.showMessageDialog(this, "Le nom rentré ne correspond à aucun sondage", "Erreur introuvable", WIDTH);
+        }
+        else {
+            
+            String nomSondageAffiche = sondageAafficher.getName();
+            Teacher teache = sondageAafficher.getTeacher();
+            Participants = sondageAafficher.getListeParticipants();
+            questions = sondageAafficher.getListeQuestion();
+            
+        }
+    }//GEN-LAST:event_validerNomSondageModifActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,7 +149,8 @@ public class S_AfficherS extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField tfNomSondageModif;
+    private javax.swing.JButton validerNomSondageModif;
     // End of variables declaration//GEN-END:variables
 }

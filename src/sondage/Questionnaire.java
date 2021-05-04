@@ -51,6 +51,16 @@ public class Questionnaire {
         return this.name;
     }
     
+    // méthode pour récupérer les questions d'un sondage
+    public List<Question> getListeQuestion(){
+        return Questions;
+    }
+    
+    // méthode pour récupérer les participants d'un sondage
+    public List<String> getListeParticipants(){
+        return Participants;
+    }
+    
     // méthode pour récupérer l'enseignant responsable d'un sondage
     public Teacher getTeacher(){
         return this.teacherRespo;
