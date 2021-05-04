@@ -106,86 +106,9 @@ public class Site_sondage {
         }
     }
     
-    // méthode permettant de modifier un sondage existant
-    public void modifierSondage(Teacher teache){
-        System.out.println("Voici la liste de tous vos sondages : \n\n");
-        afficherSondage(teache); 
-        // on affiche les sondages pour que le prof choisisse le nom exact du sondage à modifier 
-        System.out.println("Veuillez entrer le nom exact du sondage à modifier : ");
-        Scanner sc = new Scanner(System.in);
-        String nomSondage =sc.nextLine(); // le prof connecté entre le nom du sondage à modifier
-        
-        Questionnaire sondageModif = null; // création d'un nouveau sondage null
-        
-        // on parcourt la liste des sondages
-        for (int i=0; i<QuestList.size(); i++){
-            // si le nom de sondage entré correspond à un sondage existant 
-            // et que le mail du prof connecté correspond aussi à ce même sondage
-            if (nomSondage.equals(QuestList.get(i).getName()) && teache.getMail().equals(ProfList.get(i).getMail())){
-                sondageModif = QuestList.get(i); 
-                // sondageModif n'est plus un null et devient le sondage en question
-            }
-        }
-        
-        // si sondageModif est resté null
-        if (sondageModif==null){
-            System.out.println("Le nom de sondage que vous avez entré ne correspond pas à l'un de vos sondages.");
-        }
-        
-        // si sondageModif n'est plus null
-        if (sondageModif!=null){
-            int choix = 1;
-            while (choix != 5){
-                System.out.println("Menu modification sondage");
-                System.out.println("1 - SUPPRIMER SONDAGE");
-                System.out.println("2 - MODIFIER NOM");
-                System.out.println("3 - AJOUTER QUESTIONS");
-                System.out.println("4 - AJOUTER PARTICIPANTS");
-                System.out.println("5 - QUITTER");
-                System.out.println("\nChoisissez une action : ");
-                choix = sc.nextInt(); // le prof choisit une option
-                
-                switch (choix){
-                    
-                    case 1: // on supprime le sondage
-                        System.out.println("\nVoulez-vous vraiment supprimer ce sondage ?");
-                        System.out.println("1 - Oui");
-                        System.out.println("2 - Non");
-                        int choix1 = sc.nextInt(); // est-il sur de le supprimer????
-                        if (choix1==1){
-                            QuestList.remove(sondageModif); 
-                            // si oui, on retire le sondage de la liste des osndages du site
-                            System.out.println("Le sondage a été supprimé avec succès.");
-                        }
-                        choix = 5; // on quitte le menu de modification car le sondage n'existe plus
-                        break;
-                        
-                    case 2: // on modifie le nom du sondage
-                        Scanner sc1 = new Scanner(System.in);
-                        System.out.println("NOUVEAU NOM DU SONDAGE : ");
-                        String newName = sc1.nextLine(); // le prof entre le nouveau nom
-                        sondageModif.setName(newName); // grâce à la méthode setName()
-                        break;
-                        
-                    case 3: // on rajoute des questions
-                        sondageModif.ajouterQuestion(); 
-                        // à l'aide de la méthode d'ajout de questions dans un sondage
-                        break;
-                        
-                    case 4: // on rajoute des participants
-                        sondageModif.ajouterParticipant();
-                        // à l'aide de la méthode d'ajout de participants dans un sondage
-                        break;
-                        
-                    case 5: // on quitte le menu de modification du sondage
-                        break;
-                }
-            }
-            System.out.println("Voici le sondage après modifications : \n");
-            sondageModif.afficherSondage(); // on affiche le sondage une fois modifié 
-        }
-        
-        
+    // méthode permettant de supprimer un sondage
+    public void supprimerSondage(Questionnaire sondageAsupprimer){
+        QuestList.remove(sondageAsupprimer);
     }
     
     // méthode pour afficher les réponses à un sondage

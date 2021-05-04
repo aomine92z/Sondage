@@ -5,6 +5,8 @@
  */
 package S_Fiches;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import sondage.Questionnaire;
 import sondage.Site_sondage;
@@ -18,7 +20,12 @@ public class S_ModifierS extends javax.swing.JDialog {
     /**
      * Creates new form S_ModifierS
      */
+    private int compteurRep = 1;
+    private List<String> reponse = new ArrayList<String>();
     private Site_sondage site;
+    private String nomSondageModif;
+    private List<String> Participants = new ArrayList<String>(); 
+    private List<Integer> Scores = new ArrayList<Integer>();
     
     public S_ModifierS(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
@@ -37,6 +44,8 @@ public class S_ModifierS extends javax.swing.JDialog {
         validerAjoutQCM1.setVisible(false);
         validerAjoutQO.setVisible(false);
         validerChangementNom.setVisible(false);
+        bFinModifSondage.setVisible(false);
+        bAjoutRep.setVisible(false);
     }
 
     /**
@@ -64,6 +73,8 @@ public class S_ModifierS extends javax.swing.JDialog {
         jLabAjoutQcm = new javax.swing.JLabel();
         jLabAjoutQO = new javax.swing.JLabel();
         bSuppSondage = new javax.swing.JButton();
+        bAjoutRep = new javax.swing.JButton();
+        bFinModifSondage = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -77,12 +88,32 @@ public class S_ModifierS extends javax.swing.JDialog {
         });
 
         validerAjoutQO.setText("✓");
+        validerAjoutQO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerAjoutQOActionPerformed(evt);
+            }
+        });
 
         validerChangementNom.setText("✓");
+        validerChangementNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerChangementNomActionPerformed(evt);
+            }
+        });
 
         validerAjoutQCM1.setText("✓");
+        validerAjoutQCM1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerAjoutQCM1ActionPerformed(evt);
+            }
+        });
 
         validerAjoutParticipant.setText("✓");
+        validerAjoutParticipant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validerAjoutParticipantActionPerformed(evt);
+            }
+        });
 
         jLabModifNom.setText("Modifier le nom du sondage");
 
@@ -93,57 +124,80 @@ public class S_ModifierS extends javax.swing.JDialog {
         jLabAjoutQO.setText("Ajouter une question ouverte");
 
         bSuppSondage.setText("Supprimer le sondage");
+        bSuppSondage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSuppSondageActionPerformed(evt);
+            }
+        });
+
+        bAjoutRep.setText("Ajouter une réponse");
+        bAjoutRep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAjoutRepActionPerformed(evt);
+            }
+        });
+
+        bFinModifSondage.setText("Mettre fin à la modification du sondage");
+        bFinModifSondage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFinModifSondageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfNomSondageModif, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(validerNomSondageModif)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfAjoutQcm, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(validerAjoutQCM1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addComponent(tfAjoutQO, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(validerAjoutQO)
-                        .addGap(38, 38, 38))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfNewN, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(validerChangementNom)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabAjoutQcm)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tfAjouterParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(validerAjoutParticipant)
-                        .addGap(29, 29, 29))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addComponent(jLabAjoutQO)
+                        .addGap(127, 127, 127))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addComponent(jLabModifNom)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabAjoutParticipant)
                         .addGap(151, 151, 151))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfNewN, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfAjoutQcm, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bAjoutRep, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(validerChangementNom)
+                                    .addComponent(validerAjoutQCM1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tfAjouterParticipant, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                    .addComponent(tfAjoutQO))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(validerAjoutParticipant)
+                                    .addComponent(validerAjoutQO))
+                                .addGap(6, 6, 6))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(29, 29, 29))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jLabAjoutQcm)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabAjoutQO)
-                        .addGap(127, 127, 127))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(334, 334, 334)
-                .addComponent(bSuppSondage)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(tfNomSondageModif, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(validerNomSondageModif)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addComponent(bSuppSondage)
+                        .addGap(118, 118, 118))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bFinModifSondage, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +207,8 @@ public class S_ModifierS extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfNomSondageModif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(validerNomSondageModif))
+                    .addComponent(validerNomSondageModif)
+                    .addComponent(bSuppSondage))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabModifNom)
@@ -164,19 +219,22 @@ public class S_ModifierS extends javax.swing.JDialog {
                     .addComponent(tfAjouterParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(validerChangementNom)
                     .addComponent(validerAjoutParticipant))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(bSuppSondage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabAjoutQcm)
                     .addComponent(jLabAjoutQO))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfAjoutQO, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfAjoutQcm, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(validerAjoutQO)
-                    .addComponent(validerAjoutQCM1))
-                .addGap(98, 98, 98))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfAjoutQO, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfAjoutQcm, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(validerAjoutQCM1)))
+                .addGap(18, 18, 18)
+                .addComponent(bAjoutRep)
+                .addGap(43, 43, 43)
+                .addComponent(bFinModifSondage, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         pack();
@@ -184,7 +242,7 @@ public class S_ModifierS extends javax.swing.JDialog {
 
     private void validerNomSondageModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerNomSondageModifActionPerformed
         // TODO add your handling code here:
-        String nomSondageModif = tfNomSondageModif.getText();
+        nomSondageModif = tfNomSondageModif.getText();
         Questionnaire sondageAmodifier = site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif);
         if (sondageAmodifier == null){
             JOptionPane.showMessageDialog(this, "Le nom rentré ne correspond à aucun sondage", "Erreur introuvable", WIDTH);
@@ -203,8 +261,63 @@ public class S_ModifierS extends javax.swing.JDialog {
             validerAjoutQCM1.setVisible(true);
             validerAjoutQO.setVisible(true);
             validerChangementNom.setVisible(true);
+            bFinModifSondage.setVisible(true);
+            bAjoutRep.setVisible(true);
         }
     }//GEN-LAST:event_validerNomSondageModifActionPerformed
+
+    private void validerChangementNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerChangementNomActionPerformed
+        // TODO add your handling code here:
+        String nouveauNom = tfNewN.getText();
+        site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif).setName(nouveauNom);
+        nomSondageModif = nouveauNom;
+    }//GEN-LAST:event_validerChangementNomActionPerformed
+
+    private void validerAjoutParticipantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerAjoutParticipantActionPerformed
+        // TODO add your handling code here:
+        String nouveauParticipant = tfAjouterParticipant.getText();
+        site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif).ajouterParticipant(nouveauParticipant);
+    }//GEN-LAST:event_validerAjoutParticipantActionPerformed
+
+    private void bSuppSondageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSuppSondageActionPerformed
+        // TODO add your handling code here:
+        int confirmation = JOptionPane.showConfirmDialog(this, "ATTENTION", "Êtes-vous sûr de vouloir supprimer ce sondage ?", WIDTH);
+        if (confirmation==0){
+            site.supprimerSondage(site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif));
+            JOptionPane.showMessageDialog(this, "Le sondage a été supprimé avec succès.");
+        }
+    }//GEN-LAST:event_bSuppSondageActionPerformed
+
+    private void validerAjoutQOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerAjoutQOActionPerformed
+        // TODO add your handling code here:
+        String questionOuverteAjoutee = tfAjoutQO.getText();
+        site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif).ajouterOpenQuest(questionOuverteAjoutee);
+        tfAjoutQO.setText(null);
+    }//GEN-LAST:event_validerAjoutQOActionPerformed
+
+    private void validerAjoutQCM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerAjoutQCM1ActionPerformed
+        // TODO add your handling code here:
+        String QcmAjoutee = tfAjoutQcm.getText(); 
+        site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif).ajouterQcm(QcmAjoutee, reponse, Scores);
+        tfAjoutQcm.setText(null);
+    }//GEN-LAST:event_validerAjoutQCM1ActionPerformed
+
+    private void bAjoutRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAjoutRepActionPerformed
+        // TODO add your handling code here:
+        String RepAjoutee = JOptionPane.showInputDialog(this, "Rentrez une reponse possible.","Réponse numéro "+ compteurRep,JOptionPane.QUESTION_MESSAGE);
+        compteurRep+=1;
+        reponse.add(RepAjoutee);
+        Scores.add(0);
+    }//GEN-LAST:event_bAjoutRepActionPerformed
+
+    private void bFinModifSondageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinModifSondageActionPerformed
+        // TODO add your handling code here:
+        
+        
+        // FAIRE QUELQUE CHOSE POUR POUVOIR REVENIR AU MENU PROF
+        
+        
+    }//GEN-LAST:event_bFinModifSondageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +362,8 @@ public class S_ModifierS extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAjoutRep;
+    private javax.swing.JToggleButton bFinModifSondage;
     private javax.swing.JButton bSuppSondage;
     private javax.swing.JLabel jLabAjoutParticipant;
     private javax.swing.JLabel jLabAjoutQO;

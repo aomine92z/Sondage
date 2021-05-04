@@ -66,87 +66,21 @@ public class Questionnaire {
         this.name = valoName;
     }
     
-    // methode pour ajouter question et ajouter participant
-    public void creerQcm(){
-        System.out.println("Ajout d'une nouvelle question à choix multiples : ");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nQuestion : ");
-        String quest1 = sc.nextLine();
-        
-        Scanner sc1 = new Scanner(System.in);
-        System.out.println("Rentrez le nombre de réponses possibles : ");
-        int nbrRep = sc1.nextInt(); // nombre de réponses au QCM
-        
-        List <String> listReponses = new <String> ArrayList();
-        // création d'une liste de réponses
-        List <Integer> listScores = new <Integer> ArrayList();
-        // création d'une liste de scores
-        
-        for (int i=0; i<nbrRep; i++){ // jusqu'au nombre de réponses possibles
-            Scanner sc2 = new Scanner(System.in);
-            System.out.println("Réponse n°" + (i+1) + " : ");
-            String rep = sc.nextLine();
-            listReponses.add(rep); // ajout d'une possibilité de réponse
-            listScores.add(0); // initialisation du score à 0 pour chaque réponse
-        }
-    
-        Qcm newQcm = new Qcm(quest1, listReponses, listScores);
-        // création du nouveau QCM
-        Questions.add(newQcm);
-        // ajout de ce QCM à la liste de questions (questionnaire)
+    // méthode pour ajouter une question ouverte lors de la modif d'un sondage
+    public void ajouterOpenQuest(String intituleQO) {
+        Openquestion QOajoutee = new Openquestion (intituleQO);
+        this.Questions.add(QOajoutee);
     }
     
-    // méthode pour créer une question ouverte
-    public void creerOpenQuest() {
-        System.out.println("Ajout d'une nouvelle question ouverte : ");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nQuestion : ");
-        String quest1 = sc.nextLine(); // intitulé de la question
-        
-        Openquestion newOpen = new Openquestion(quest1);
-        // création d'une nouvelle question ouverte
-        Questions.add(newOpen);
-        // ajout de cette question ouverte à la liste de questions
-    }
-    
-    // méthode pour ajouter une question 
-    public void ajouterQuestion(){
-        int choix = 1;
-        while (choix!=3){ // tant que l'utilisateur veut ajouter des questions
-            System.out.println("1 - AJOUTER UN QCM");
-            System.out.println("2 - AJOUTER UNE QUESTION OUVERTE");
-            System.out.println("3 - TERMINER LE QUESTIONNAIRE");
-
-            System.out.println("\nChoisissez une option :");
-            Scanner sc = new Scanner(System.in);
-            choix = sc.nextInt(); // choix du type de questions à ajouter
-            // ou choix de terminer le questionnaire
-
-            switch (choix){
-                case 1 :
-                    this.creerQcm(); // on ajoute un QCM
-                    break;
-                case 2 :
-                    this.creerOpenQuest(); // on ajoute une question ouverte
-                    break;
-                case 3 :
-                    break; // on termine le questionnaire
-            }
-        }
+    // méthode pour ajouter un qcm lors de la modif d'un sondage
+    public void ajouterQcm (String intituleQcm, List <String> listReponses, List <Integer> scorito){
+        Qcm QCMajoutee = new Qcm (intituleQcm, listReponses, scorito);
+        this.Questions.add(QCMajoutee);
     }
     
     // méthode pour ajouter des participants à la liste de participants
-    public void ajouterParticipant() {
-        Scanner scNbr = new Scanner(System.in);
-        System.out.println("Combien de participants souhaitez-vous rajouter ? ");
-        int nbrParticipant = scNbr.nextInt();
-        
-        for (int i=0; i<nbrParticipant; i++){
-            System.out.println("Adresse mail scolaire du participant n°" + (i+1) + " : ");
-            Scanner sc = new Scanner(System.in);
-            String mailEleve = sc.nextLine(); // on entre le mail de l'élève participant
-            this.Participants.add(mailEleve);  // onajoute cet élève à la liste
-        }
+    public void ajouterParticipant(String nomParticipant) {
+        this.Participants.add(nomParticipant);
     }
     
     // méthode pour afficher un sondage
