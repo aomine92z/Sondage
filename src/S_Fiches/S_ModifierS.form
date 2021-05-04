@@ -23,217 +23,265 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jLabAjoutQcm" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabAjoutQO" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jLabModifNom" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabAjoutParticipant" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="tfNewN" min="-2" pref="232" max="-2" attributes="0"/>
-                                  <Component id="tfAjoutQcm" min="-2" pref="238" max="-2" attributes="0"/>
-                                  <Component id="bAjoutRep" alignment="1" min="-2" pref="238" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="validerChangementNom" min="-2" max="-2" attributes="0"/>
-                                  <Component id="validerAjoutQCM1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="tfAjouterParticipant" pref="219" max="32767" attributes="0"/>
-                                  <Component id="tfAjoutQO" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="validerAjoutParticipant" min="-2" max="-2" attributes="0"/>
-                                  <Component id="validerAjoutQO" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="tfNomSondageModif" min="-2" pref="339" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="validerNomSondageModif" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="81" max="32767" attributes="0"/>
-                      <Component id="bSuppSondage" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="bFinModifSondage" min="-2" pref="499" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfNomSondageModif" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="validerNomSondageModif" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bSuppSondage" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabModifNom" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabAjoutParticipant" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfNewN" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="tfAjouterParticipant" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="validerChangementNom" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="validerAjoutParticipant" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="54" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabAjoutQcm" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabAjoutQO" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="validerAjoutQO" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tfAjoutQO" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="tfAjoutQcm" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="validerAjoutQCM1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="bAjoutRep" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="bFinModifSondage" min="-2" pref="85" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="tfNewN">
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfNomSondageModif">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V euillez entrer le nom du sondage &#xe0; modifier :"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="fd" green="dc" red="dc" type="rgb"/>
+        </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="validerNomSondageModif">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Valider"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerNomSondageModifActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfAjouterParticipant">
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfAjoutQO">
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfAjoutQcm">
-    </Component>
-    <Component class="javax.swing.JButton" name="validerAjoutQO">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x2713;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerAjoutQOActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="validerChangementNom">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x2713;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerChangementNomActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="validerAjoutQCM1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x2713;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerAjoutQCM1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="validerAjoutParticipant">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x2713;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerAjoutParticipantActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabModifNom">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Modifier le nom du sondage"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabAjoutParticipant">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter un participant"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabAjoutQcm">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter un QCM"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabAjoutQO">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter une question ouverte"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="bSuppSondage">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Supprimer le sondage"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSuppSondageActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="bAjoutRep">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter une r&#xe9;ponse"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAjoutRepActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="bFinModifSondage">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mettre fin &#xe0; la modification du sondage"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bFinModifSondageActionPerformed"/>
-      </Events>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="bAjoutRep" min="-2" pref="238" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="validerAjoutQCM1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="54" max="32767" attributes="0"/>
+                          <Component id="bFinModifSondage" min="-2" pref="441" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabAjoutQcm" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="tfNomSondageModif" min="-2" pref="339" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="validerNomSondageModif" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="tfNewN" min="-2" pref="232" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="validerChangementNom" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabModifNom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfAjoutQcm" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="validerAjoutParticipant" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="validerAjoutQO" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabAjoutParticipant" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfAjouterParticipant" min="-2" pref="219" max="-2" attributes="0"/>
+                              <Component id="jLabAjoutQO" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfAjoutQO" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="bSuppSondage" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="bSuppSondage" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="tfNomSondageModif" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="validerNomSondageModif" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabAjoutParticipant" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabModifNom" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tfNewN" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="validerChangementNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Component id="validerAjoutParticipant" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfAjouterParticipant" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="jLabAjoutQcm" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jLabAjoutQO" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="tfAjoutQO" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="validerAjoutQO" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tfAjoutQcm" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="bAjoutRep" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="validerAjoutQCM1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="bFinModifSondage" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" pref="36" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabAjoutQO">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ajouter une question ouverte"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfAjoutQO">
+        </Component>
+        <Component class="javax.swing.JButton" name="validerAjoutQO">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x2713;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerAjoutQOActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabAjoutQcm">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ajouter un QCM"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfAjoutQcm">
+        </Component>
+        <Component class="javax.swing.JButton" name="validerAjoutQCM1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x2713;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerAjoutQCM1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="bAjoutRep">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ajouter une r&#xe9;ponse"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAjoutRepActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="bFinModifSondage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mettre fin &#xe0; la modification du sondage"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bFinModifSondageActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfNewN">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabModifNom">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modifier le nom du sondage"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="validerChangementNom">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x2713;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerChangementNomActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfAjouterParticipant">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabAjoutParticipant">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ajouter un participant"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="validerAjoutParticipant">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x2713;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerAjoutParticipantActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfNomSondageModif">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Veuillez entrer le nom du sondage &#xe0; modifier :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="validerNomSondageModif">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Valider"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validerNomSondageModifActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="bSuppSondage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Supprimer le sondage"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSuppSondageActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Modifier sondage"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
