@@ -85,6 +85,7 @@ public class S_AjouterS extends javax.swing.JDialog {
         tfQO = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         bQOSuivante = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -254,6 +255,13 @@ public class S_AjouterS extends javax.swing.JDialog {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Quitter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pQOuverteLayout = new javax.swing.GroupLayout(pQOuverte);
         pQOuverte.setLayout(pQOuverteLayout);
         pQOuverteLayout.setHorizontalGroup(
@@ -261,47 +269,51 @@ public class S_AjouterS extends javax.swing.JDialog {
             .addGroup(pQOuverteLayout.createSequentialGroup()
                 .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pQOuverteLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addGroup(pQOuverteLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
                                 .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
                                     .addGroup(pQOuverteLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pQOuverteLayout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
                                         .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rbAffNon)
-                                            .addComponent(rbAffOui))))
-                                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pQOuverteLayout.createSequentialGroup()
-                                        .addGap(54, 54, 54)
-                                        .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
                                             .addGroup(pQOuverteLayout.createSequentialGroup()
-                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel1)
+                                                .addGap(34, 34, 34)
+                                                .addComponent(tfNomS, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(pQOuverteLayout.createSequentialGroup()
+                                                .addComponent(jLabel3)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(tfParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(pQOuverteLayout.createSequentialGroup()
-                                        .addGap(225, 225, 225)
+                                                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(rbAffNon)
+                                                    .addComponent(rbAffOui))))
                                         .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rbAnoOui)
-                                            .addComponent(rbAnoNon))))
-                                .addGap(50, 50, 50)
-                                .addComponent(validerParticipant))))
-                    .addGroup(pQOuverteLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(validerQuestionnaire)
-                .addGap(234, 234, 234))
+                                            .addGroup(pQOuverteLayout.createSequentialGroup()
+                                                .addGap(54, 54, 54)
+                                                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel2)
+                                                    .addGroup(pQOuverteLayout.createSequentialGroup()
+                                                        .addComponent(jLabel4)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(tfParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(pQOuverteLayout.createSequentialGroup()
+                                                .addGap(225, 225, 225)
+                                                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(rbAnoOui)
+                                                    .addComponent(rbAnoNon))))
+                                        .addGap(50, 50, 50)
+                                        .addComponent(validerParticipant))))
+                            .addGroup(pQOuverteLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 52, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(validerQuestionnaire)
+                        .addGap(131, 131, 131)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         pQOuverteLayout.setVerticalGroup(
             pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,19 +340,16 @@ public class S_AjouterS extends javax.swing.JDialog {
                                         .addGap(16, 16, 16)))
                                 .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(pQOuverteLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
                                         .addComponent(rbAffOui)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rbAffNon))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel4)
                                             .addComponent(tfParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(14, 14, 14)))))
-                        .addGap(18, 18, 18)
-                        .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(pQCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pQOuverteLayout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -349,8 +358,13 @@ public class S_AjouterS extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(validerQuestionnaire)
-                .addGap(22, 22, 22))
+                .addGroup(pQOuverteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pQOuverteLayout.createSequentialGroup()
+                        .addComponent(validerQuestionnaire)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pQOuverteLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -358,14 +372,16 @@ public class S_AjouterS extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pQOuverte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pQOuverte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(pQOuverte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pQOuverte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pDebutSLayout = new javax.swing.GroupLayout(pDebutS);
@@ -375,7 +391,7 @@ public class S_AjouterS extends javax.swing.JDialog {
             .addGroup(pDebutSLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(7, 7, 7))
         );
         pDebutSLayout.setVerticalGroup(
             pDebutSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,6 +486,11 @@ public class S_AjouterS extends javax.swing.JDialog {
         tfParticipant.setText(null);
     }//GEN-LAST:event_validerParticipantActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        this.getParent().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -522,6 +543,7 @@ public class S_AjouterS extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
