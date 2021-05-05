@@ -94,17 +94,6 @@ public class Site_sondage {
     public void ajouterSondage(Questionnaire sondageCree){
         QuestList.add(sondageCree);
     }
-
-    public void afficherSondage(Teacher teache){
-        // on parcourt les tableau des sondages
-        for (int i =0; i<QuestList.size(); i++){
-            // si le mail du prof connecté correspond au mail du prof responsable d'un sondage
-            if(teache.getMail().equals(QuestList.get(i).getTeacher().getMail())){
-                System.out.println("  - SONDAGE N°" + (i+1) + " --\n");
-                QuestList.get(i).afficherSondage(); // on affiche le sondage en question
-            }
-        }
-    }
     
     // méthode permettant de supprimer un sondage
     public void supprimerSondage(Questionnaire sondageAsupprimer){

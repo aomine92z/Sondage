@@ -35,6 +35,11 @@ public class Qcm extends Question {
         return this.score;
     } 
     
+    // méthode pour récupérer la liste des reponses
+    public List<String> getListRep(){
+        return this.reponsesQcm;
+    } 
+    
     // méthode permettant de compter le nombre de fois qu'une réponse a été choisie
     public void ajouterScore(int indiceRepDonnee){
         score.add((indiceRepDonnee - 1), 1);

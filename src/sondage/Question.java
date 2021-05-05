@@ -7,6 +7,8 @@ package sondage;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import javax.swing.table.TableModel;
 
 /** créer des classes
  *
@@ -42,5 +44,13 @@ public class Question {
     
     // méthode pour la sauvegarde d'une question
     public void versFichiers(FileWriter fichier) throws IOException{ 
+    }
+
+    public List<String> getListRep() {
+        return null;
+    }
+
+    public List<Integer> getScore() {
+        return null;
     }
 }
