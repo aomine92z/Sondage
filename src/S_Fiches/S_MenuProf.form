@@ -54,14 +54,10 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="bConsulEtu" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="53" max="32767" attributes="0"/>
                                   <Component id="bQuitter" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="bAfficherS" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="bConsulGene" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="bAfficherS" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="bAjouterS" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -89,10 +85,7 @@
                       <Component id="bModifierS" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="19" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="bConsulGene" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="bAfficherS" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="bAfficherS" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="19" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bConsulEtu" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -135,14 +128,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bConsulEtuActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="bConsulGene">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Consultation g&#xe9;n&#xe9;rale d&apos;un sondage"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bConsulGeneActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bAfficherS">

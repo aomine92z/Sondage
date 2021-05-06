@@ -5,7 +5,18 @@
  */
 package S_Fiches;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import sondage.Openquestion;
+import sondage.Openreponse;
+import sondage.Qcm;
+import sondage.Questionnaire;
+import sondage.Reponse;
 import sondage.Site_sondage;
+import sondage.Student;
+import sondage.Table_mode_etu;
 
 /**
  *
@@ -17,11 +28,28 @@ public class S_Etudiant extends javax.swing.JDialog {
      * Creates new form S_Etudiant
      */
     private Site_sondage site;
+    private Student eleveConnecte;
+    private List<Reponse> Reponses = new ArrayList<Reponse>();
+    private Questionnaire jouerSondage;
+    private int compteurQuest = 1;
     
     public S_Etudiant(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
         super(parent, modal);
         initComponents();
         site = monSite;
+        bValiderCode.setVisible(true);
+        jLabMenuEtu.setVisible(true);
+        jLabRentrezCode.setVisible(true);
+        tfCode.setVisible(true);
+        jLabRentrezVotreMail.setVisible(false);
+        tfEmailEtu.setVisible(false);
+        bValiderMailParticipant.setVisible(false);
+        jLabNumeroQuest.setVisible(false);
+        jLabIntituleQuest.setVisible(false);
+        jLabTypeQuest.setVisible(false);
+        tfInsertionReponse.setVisible(false);
+        bAfficherRepQcm.setVisible(false);
+        bQuestionSuivante.setVisible(false);
     }
 
     /**
@@ -35,289 +63,248 @@ public class S_Etudiant extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabRentrezVotreMail = new javax.swing.JLabel();
+        jLabRentrezCode = new javax.swing.JLabel();
         tfEmailEtu = new javax.swing.JTextField();
         tfCode = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        tfQQcm = new javax.swing.JLabel();
-        lRep1 = new javax.swing.JLabel();
-        lRep2 = new javax.swing.JLabel();
-        lRep3 = new javax.swing.JLabel();
-        lRep4 = new javax.swing.JLabel();
-        rbRep1 = new javax.swing.JRadioButton();
-        rbRep2 = new javax.swing.JRadioButton();
-        rbRep3 = new javax.swing.JRadioButton();
-        rbRep4 = new javax.swing.JRadioButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        tfQQOuverte = new javax.swing.JLabel();
-        tfRepQO = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        bRetour = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        bValiderCode = new javax.swing.JButton();
+        jLabMenuEtu = new javax.swing.JLabel();
+        bValiderMailParticipant = new javax.swing.JButton();
+        jLabNumeroQuest = new javax.swing.JLabel();
+        jLabIntituleQuest = new javax.swing.JLabel();
+        tfInsertionReponse = new javax.swing.JTextField();
+        jLabTypeQuest = new javax.swing.JLabel();
+        bAfficherRepQcm = new javax.swing.JButton();
+        bQuestionSuivante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(220, 220, 253));
 
-        jLabel2.setText("Rentrez votre mail");
+        jLabRentrezVotreMail.setText("Rentrez votre mail");
 
-        jLabel1.setText("Rentrez le code ");
+        jLabRentrezCode.setText("Rentrez le code ");
 
-        jButton1.setText("Valider");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bValiderCode.setText("Valider");
+        bValiderCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bValiderCodeActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(220, 220, 253));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "QCM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 18))); // NOI18N
+        jLabMenuEtu.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabMenuEtu.setText("Menu Etudiant");
 
-        tfQQcm.setText("jLabel5");
-
-        lRep1.setText("jLabel7");
-
-        lRep2.setText("jLabel8");
-
-        lRep3.setText("jLabel9");
-
-        lRep4.setText("jLabel10");
-
-        jLabel5.setText("Réponse 1 ");
-
-        jLabel11.setText("Réponse 2");
-
-        jLabel12.setText("Réponse 3");
-
-        jLabel13.setText("Réponse 4");
-
-        jButton2.setText("Validé, Question Suivante");
-
-        jLabel7.setText("Question :");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lRep4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rbRep4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lRep3)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbRep3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lRep2)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbRep2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lRep1)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbRep1)))
-                .addGap(17, 17, 17))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(55, 55, 55)
-                        .addComponent(tfQQcm)
-                        .addGap(31, 31, 31)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfQQcm)
-                    .addComponent(jLabel7))
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lRep1)
-                    .addComponent(rbRep1)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lRep2)
-                    .addComponent(rbRep2)
-                    .addComponent(jLabel11))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lRep3)
-                    .addComponent(rbRep3)
-                    .addComponent(jLabel12))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lRep4)
-                    .addComponent(rbRep4)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(52, 52, 52))
-        );
-
-        jPanel2.setBackground(new java.awt.Color(220, 220, 253));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Question Ouverte", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 18))); // NOI18N
-
-        tfQQOuverte.setText("jLabel6");
-
-        jLabel6.setText("Question :");
-
-        jLabel8.setText("Répondez à la question");
-
-        jButton3.setText("Validé, Question suivante");
-
-        bRetour.setText("Retour");
-        bRetour.addActionListener(new java.awt.event.ActionListener() {
+        bValiderMailParticipant.setText("Valider");
+        bValiderMailParticipant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRetourActionPerformed(evt);
+                bValiderMailParticipantActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfRepQO, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(59, 59, 59)
-                        .addComponent(tfQQOuverte))
-                    .addComponent(jLabel8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 77, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(72, 72, 72))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(bRetour)
-                        .addContainerGap())))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(tfQQOuverte))
-                .addGap(44, 44, 44)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(tfRepQO, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bRetour)
-                .addContainerGap())
-        );
+        jLabNumeroQuest.setText(" ");
+        jLabNumeroQuest.setOpaque(true);
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel3.setText("Menu Etudiant");
+        jLabIntituleQuest.setText("  ");
+        jLabIntituleQuest.setOpaque(true);
+
+        tfInsertionReponse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfInsertionReponseMouseClicked(evt);
+            }
+        });
+
+        jLabTypeQuest.setText("  ");
+        jLabTypeQuest.setOpaque(true);
+
+        bAfficherRepQcm.setText("Afficher réponses possibles");
+        bAfficherRepQcm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAfficherRepQcmActionPerformed(evt);
+            }
+        });
+
+        bQuestionSuivante.setText("Valider la réponse et passer à la question suivante ");
+        bQuestionSuivante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuestionSuivanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(27, 27, 27)
+                .addComponent(jLabMenuEtu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabRentrezVotreMail)
+                    .addComponent(jLabRentrezCode))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel3)
-                        .addContainerGap(610, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfCode, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(tfEmailEtu, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)
-                                .addComponent(jButton1)))
-                        .addGap(88, 88, 88))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(tfCode, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bValiderCode))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(tfEmailEtu, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bValiderMailParticipant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(129, 129, 129))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabNumeroQuest, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabTypeQuest, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bAfficherRepQcm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabIntituleQuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfInsertionReponse)
+                    .addComponent(bQuestionSuivante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
+                .addComponent(jLabMenuEtu)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabRentrezCode)
+                    .addComponent(tfCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bValiderCode, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabRentrezVotreMail)
                     .addComponent(tfEmailEtu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(bValiderMailParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabNumeroQuest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabTypeQuest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bAfficherRepQcm))
+                .addGap(18, 18, 18)
+                .addComponent(jLabIntituleQuest, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfInsertionReponse, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bQuestionSuivante)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
-        this.setVisible(false);
-        this.getParent().setVisible(true);//=fiche d'acceuil
-    }//GEN-LAST:event_bRetourActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bValiderCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderCodeActionPerformed
         String Code = tfCode.getText();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        jouerSondage = site.codeSondage(Integer.valueOf(Code));
+        if (jouerSondage==null){
+            JOptionPane.showMessageDialog(this, "Le nom rentré ne correspond à aucun sondage", "Erreur introuvable", WIDTH);
+        }
+        else{
+            if (jouerSondage.getAnonyme()==false){
+                jLabRentrezVotreMail.setVisible(true);
+                tfEmailEtu.setVisible(true);
+                bValiderMailParticipant.setVisible(true);
+            }
+            else if (jouerSondage.getAnonyme()==true){
+                eleveConnecte = new Student("anonyme");
+            }
+            jLabNumeroQuest.setText("Question numéro 1");
+            jLabNumeroQuest.setVisible(true);
+            jLabIntituleQuest.setText(jouerSondage.getListeQuestion().get(0).getIntituleQuest());
+            jLabIntituleQuest.setVisible(true);
+            bQuestionSuivante.setVisible(true);
+            if (jouerSondage.getListeQuestion().get(0).getClass()==Openquestion.class){
+                jLabTypeQuest.setText("Question à reponse ouverte");
+                jLabTypeQuest.setVisible(true);
+                tfInsertionReponse.setVisible(true);
+                String answer = tfInsertionReponse.getText();
+                Openreponse repOuverte = new Openreponse(0, eleveConnecte, answer);
+                Reponses.add(repOuverte);
+            }
+            else if (jouerSondage.getListeQuestion().get(0).getClass()==Qcm.class){
+                jLabTypeQuest.setText("Question à reponses prédéfinies");
+                jLabTypeQuest.setVisible(true);
+                bAfficherRepQcm.setVisible(true);
+                tfInsertionReponse.setText("Pour les questions à réponses prédéfinies veuillez seulement entrer le numéro de la réponse choisie.");
+                tfInsertionReponse.setVisible(true);
+                int indiceRepChoisie = Integer.valueOf(tfInsertionReponse.getText());
+                Reponse repQcm = new Reponse (0, indiceRepChoisie, eleveConnecte);
+                Reponses.add(repQcm);
+            }
+            
+        }
+    }//GEN-LAST:event_bValiderCodeActionPerformed
+
+    private void bValiderMailParticipantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderMailParticipantActionPerformed
+        // TODO add your handling code here:
+        String mailParticipant = tfEmailEtu.getText();
+        eleveConnecte = new Student(mailParticipant);
+    }//GEN-LAST:event_bValiderMailParticipantActionPerformed
+
+    private void bAfficherRepQcmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAfficherRepQcmActionPerformed
+        // TODO add your handling code here:
+        JTable affichageRepQcm = new JTable (new Table_mode_etu(jouerSondage.getListeQuestion().get(compteurQuest-1).getListRep()));
+        affichageRepQcm.setVisible(true);
+    }//GEN-LAST:event_bAfficherRepQcmActionPerformed
+
+    private void tfInsertionReponseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfInsertionReponseMouseClicked
+        // TODO add your handling code here:
+        tfInsertionReponse.setText("");
+    }//GEN-LAST:event_tfInsertionReponseMouseClicked
+
+    private void bQuestionSuivanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuestionSuivanteActionPerformed
+        // TODO add your handling code here:
+        compteurQuest+=1;
+        jLabNumeroQuest.setText("Question numéro " + (compteurQuest));
+        jLabNumeroQuest.setVisible(true);
+        jLabIntituleQuest.setText(jouerSondage.getListeQuestion().get(compteurQuest-1).getIntituleQuest());
+        jLabIntituleQuest.setVisible(true);
+        if (jouerSondage.getListeQuestion().get(compteurQuest-1).getClass()==Openquestion.class){
+                jLabTypeQuest.setText("Question à reponse ouverte");
+                jLabTypeQuest.setVisible(true);
+                tfInsertionReponse.setVisible(true);
+                String answer = tfInsertionReponse.getText();
+                Openreponse repOuverte = new Openreponse(compteurQuest-1, eleveConnecte, answer);
+                Reponses.add(repOuverte);
+        }
+        else if (jouerSondage.getListeQuestion().get(compteurQuest-1).getClass()==Qcm.class){
+                jLabTypeQuest.setText("Question à reponses prédéfinies");
+                jLabTypeQuest.setVisible(true);
+                bAfficherRepQcm.setVisible(true);
+                tfInsertionReponse.setText("Pour les questions à réponses prédéfinies veuillez seulement entrer le numéro de la réponse choisie.");
+                tfInsertionReponse.setVisible(true);   
+                int indiceRepChoisie = Integer.valueOf(tfInsertionReponse.getText());
+                Reponse repQcm = new Reponse (compteurQuest-1, indiceRepChoisie, eleveConnecte);
+                Reponses.add(repQcm);
+        }
+        bQuestionSuivante.setVisible(true);
+        
+        if (compteurQuest==jouerSondage.getListeQuestion().size()){
+            JOptionPane.showMessageDialog(this, "Vous avez répondu à toutes les questions du sondage vous allez être redirigés vers la page d'accueil.", "Sondage terminé.", WIDTH);
+            this.setVisible(false);
+            this.getParent().setVisible(true);
+        }
+            
+    }//GEN-LAST:event_bQuestionSuivanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,36 +349,20 @@ public class S_Etudiant extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bRetour;
+    private javax.swing.JButton bAfficherRepQcm;
+    private javax.swing.JButton bQuestionSuivante;
+    private javax.swing.JButton bValiderCode;
+    private javax.swing.JButton bValiderMailParticipant;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabIntituleQuest;
+    private javax.swing.JLabel jLabMenuEtu;
+    private javax.swing.JLabel jLabNumeroQuest;
+    private javax.swing.JLabel jLabRentrezCode;
+    private javax.swing.JLabel jLabRentrezVotreMail;
+    private javax.swing.JLabel jLabTypeQuest;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lRep1;
-    private javax.swing.JLabel lRep2;
-    private javax.swing.JLabel lRep3;
-    private javax.swing.JLabel lRep4;
-    private javax.swing.JRadioButton rbRep1;
-    private javax.swing.JRadioButton rbRep2;
-    private javax.swing.JRadioButton rbRep3;
-    private javax.swing.JRadioButton rbRep4;
     private javax.swing.JTextField tfCode;
     private javax.swing.JTextField tfEmailEtu;
-    private javax.swing.JLabel tfQQOuverte;
-    private javax.swing.JLabel tfQQcm;
-    private javax.swing.JTextField tfRepQO;
+    private javax.swing.JTextField tfInsertionReponse;
     // End of variables declaration//GEN-END:variables
 }

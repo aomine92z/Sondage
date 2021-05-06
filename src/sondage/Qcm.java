@@ -31,7 +31,7 @@ public class Qcm extends Question {
     // autres méthodes
     
     // méthode pour récupérer la liste des scores
-    public List<Integer> getScore(){
+    public List<Integer> getListScore(){
         return this.score;
     } 
     

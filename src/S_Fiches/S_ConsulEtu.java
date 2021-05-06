@@ -5,7 +5,12 @@
  */
 package S_Fiches;
 
+import javax.swing.JOptionPane;
+import sondage.Openquestion;
+import sondage.Qcm;
+import sondage.Questionnaire;
 import sondage.Site_sondage;
+import sondage.Student;
 
 /**
  *
@@ -17,11 +22,23 @@ public class S_ConsulEtu extends javax.swing.JDialog {
      * Creates new form S_ConsulEtu
      */
     private Site_sondage site;
+    private static S_MenuProf fichMenuProfConnecte;
+    private Questionnaire SondageResult;
+    private String nomParticipant;
+    private int indiceParticipant = -1;
+    private int compteurQuest = 1;
     
-    public S_ConsulEtu(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
+    public S_ConsulEtu(java.awt.Frame parent, boolean modal, Site_sondage monSite, S_MenuProf menuProfConnecte) {
         super(parent, modal);
         initComponents();
         site = monSite;
+        fichMenuProfConnecte = menuProfConnecte;
+        jLabRentrerEleve.setVisible(false);
+        tfNomParticipant.setVisible(false);
+        jLabIntituleQuest.setVisible(false);
+        jLabNumQuest.setVisible(false);
+        jLabReponseEtudiant.setVisible(false);
+        jLabel1.setVisible(false);
     }
 
     /**
@@ -34,91 +51,134 @@ public class S_ConsulEtu extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        jLabRentrerNomS = new javax.swing.JLabel();
+        jLabRentrerEleve = new javax.swing.JLabel();
+        bValiderNomSondage = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        tfNomSondage = new javax.swing.JTextField();
+        tfNomParticipant = new javax.swing.JTextField();
+        jLabNumQuest = new javax.swing.JLabel();
+        jLabIntituleQuest = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabReponseEtudiant = new javax.swing.JLabel();
+        bQuestionSuivante = new javax.swing.JButton();
+        bQuitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(220, 220, 253));
 
-        jLabel3.setText("Affichage des réponses de l'élève");
+        jLabRentrerNomS.setText("Rentrez le nom du sondage");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jLabRentrerEleve.setText("Rentrez le mail d'un participant : ");
+
+        bValiderNomSondage.setText("Valider");
+        bValiderNomSondage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bValiderNomSondageActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
-
-        jLabel1.setText("Choisissez votre sondage");
-
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
-
-        jLabel2.setText("Choisissez un élève");
-
-        jButton6.setText("Valider");
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Consultation des réponses d'un étudiant");
+
+        tfNomSondage.setText(" ");
+
+        tfNomParticipant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomParticipantActionPerformed(evt);
+            }
+        });
+
+        jLabNumQuest.setOpaque(true);
+
+        jLabIntituleQuest.setOpaque(true);
+
+        jLabel1.setText("Réponse donnée par l'étudiant :");
+        jLabel1.setOpaque(true);
+
+        jLabReponseEtudiant.setOpaque(true);
+
+        bQuestionSuivante.setText("Question suivante");
+        bQuestionSuivante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuestionSuivanteActionPerformed(evt);
+            }
+        });
+
+        bQuitter.setText("Quitter");
+        bQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuitterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabNumQuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(130, 130, 130)
-                                .addComponent(jLabel2))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(bQuestionSuivante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(bValiderNomSondage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfNomSondage)
+                                        .addComponent(jLabRentrerNomS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(206, 206, 206))
+                                .addGap(78, 78, 78)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabRentrerEleve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfNomParticipant)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(193, 193, 193)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(59, 59, 59)
-                        .addComponent(jButton6)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabReponseEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabIntituleQuest, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel4)
-                .addGap(57, 57, 57)
-                .addComponent(jLabel3)
-                .addGap(30, 30, 30)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel4)
+                    .addComponent(bQuitter))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabRentrerNomS)
+                    .addComponent(jLabRentrerEleve))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNomSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfNomParticipant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bValiderNomSondage)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabIntituleQuest, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(jLabNumQuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
-                        .addComponent(jButton6)
-                        .addContainerGap())))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bQuestionSuivante))
+                    .addComponent(jLabReponseEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,6 +194,80 @@ public class S_ConsulEtu extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfNomParticipantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomParticipantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomParticipantActionPerformed
+
+    private void bValiderNomSondageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderNomSondageActionPerformed
+        // TODO add your handling code here:
+        SondageResult = site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(),tfNomSondage.getText());
+        if(SondageResult==null){
+            JOptionPane.showMessageDialog(this, "Le nom rentré ne correspond à aucun sondage", "Erreur introuvable", WIDTH);
+        }
+        else{
+            if (SondageResult.getAnonyme()==true){
+                JOptionPane.showMessageDialog(this, "Le sondage est anonyme vous ne pouvez pas afficher les réponses d'un étudiant en particulier.", "Erreur anonyme", WIDTH);
+                this.setVisible(false);
+                fichMenuProfConnecte.setVisible(true);
+            }
+            else if (SondageResult.getAnonyme()==false){
+                jLabRentrerEleve.setVisible(true);
+                tfNomParticipant.setVisible(true);
+
+                nomParticipant = tfNomParticipant.getText();
+                for (int i=0; i<SondageResult.getListeParticipants().size(); i++){
+                    if (nomParticipant==SondageResult.getListeParticipants().get(i)){
+                        indiceParticipant = i;
+                    }
+                }
+                if (indiceParticipant==-1){
+                    JOptionPane.showMessageDialog(this, "Le mail rentré ne correspond à aucun étudiant", "Erreur introuvable", WIDTH);
+                }
+                else{
+                    jLabIntituleQuest.setText(SondageResult.getListeQuestion().get(0).getIntituleQuest());
+                    jLabIntituleQuest.setVisible(true);
+                    jLabNumQuest.setText("Question numéro 1");
+                    jLabNumQuest.setVisible(true);
+                    if (SondageResult.getListeQuestion().get(0).getClass()==Qcm.class){
+                        jLabReponseEtudiant.setText("Indice de la réponse choisie : " + SondageResult.searchRepStudent(S_ConnexionEns.getProfConnecte(), nomParticipant, 0) + " ||" + System.lineSeparator() + "Intitulé de la réponse : " + SondageResult.getListeQuestion().get(0).getListRep().get(Integer.valueOf(SondageResult.searchRepStudent(S_ConnexionEns.getProfConnecte(), nomParticipant, 0))));
+                    }
+                    else if(SondageResult.getListeQuestion().get(0).getClass()==Openquestion.class){
+                       jLabReponseEtudiant.setText("Réponse ouverte de l'étudiant : " + SondageResult.searchRepStudent(S_ConnexionEns.getProfConnecte(), nomParticipant, 0));
+                    }
+                    jLabReponseEtudiant.setVisible(true);
+                    jLabel1.setVisible(true);
+                }
+            }
+        }
+    }//GEN-LAST:event_bValiderNomSondageActionPerformed
+
+    private void bQuestionSuivanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuestionSuivanteActionPerformed
+        // TODO add your handling code here:
+        jLabIntituleQuest.setText(SondageResult.getListeQuestion().get(compteurQuest).getIntituleQuest());
+        jLabIntituleQuest.setVisible(true);
+        jLabNumQuest.setText("Question numéro " + (compteurQuest+1));
+        jLabNumQuest.setVisible(true);
+        if (SondageResult.getListeQuestion().get(compteurQuest).getClass()==Qcm.class){
+            jLabReponseEtudiant.setText("Indice de la réponse choisie : " + SondageResult.searchRepStudent(S_ConnexionEns.getProfConnecte(), nomParticipant, compteurQuest) + " ||" + System.lineSeparator() + "Intitulé de la réponse : " + SondageResult.getListeQuestion().get(compteurQuest).getListRep().get(Integer.valueOf(SondageResult.searchRepStudent(S_ConnexionEns.getProfConnecte(), nomParticipant, compteurQuest))));
+        }
+        else if(SondageResult.getListeQuestion().get(compteurQuest).getClass()==Openquestion.class){
+           jLabReponseEtudiant.setText("Réponse ouverte de l'étudiant : " + SondageResult.searchRepStudent(S_ConnexionEns.getProfConnecte(), nomParticipant, compteurQuest));
+        }
+        jLabReponseEtudiant.setVisible(true);
+        jLabel1.setVisible(true);
+        
+        compteurQuest+=1;
+        if (compteurQuest==SondageResult.getListeQuestion().size()){
+            compteurQuest=0;
+        }
+    }//GEN-LAST:event_bQuestionSuivanteActionPerformed
+
+    private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        fichMenuProfConnecte.setVisible(true);
+    }//GEN-LAST:event_bQuitterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,7 +299,7 @@ public class S_ConsulEtu extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_ConsulEtu dialog = new S_ConsulEtu(new javax.swing.JFrame(), true, S_Accueil.getSite());
+                S_ConsulEtu dialog = new S_ConsulEtu(new javax.swing.JFrame(), true, S_Accueil.getSite(), fichMenuProfConnecte);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -178,15 +312,18 @@ public class S_ConsulEtu extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton bQuestionSuivante;
+    private javax.swing.JButton bQuitter;
+    private javax.swing.JButton bValiderNomSondage;
+    private javax.swing.JLabel jLabIntituleQuest;
+    private javax.swing.JLabel jLabNumQuest;
+    private javax.swing.JLabel jLabRentrerEleve;
+    private javax.swing.JLabel jLabRentrerNomS;
+    private javax.swing.JLabel jLabReponseEtudiant;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField tfNomParticipant;
+    private javax.swing.JTextField tfNomSondage;
     // End of variables declaration//GEN-END:variables
 }

@@ -66,6 +66,16 @@ public class Questionnaire {
         return this.teacherRespo;
     }
     
+    //méthode pour récupérer l'anonymat du sondage
+    public boolean getAnonyme(){
+        return anonyme;
+    }
+   
+    //méthode pour récupérer la valeur de l'affichage en temps réel du sondage
+    public boolean getAffichageTempsReel(){
+        return affichageResultats;
+    }
+    
     // méthode pour récupérer le code d'un sondage
     public int getCode(){
         return this.code;
@@ -91,43 +101,6 @@ public class Questionnaire {
     // méthode pour ajouter des participants à la liste de participants
     public void ajouterParticipant(String nomParticipant) {
         this.Participants.add(nomParticipant);
-    }
-    
-    // méthode pour afficher un sondage
-    public void afficherSondage(){
-        System.out.println(this.name); // affichage du nom
-        System.out.println(this.teacherRespo.getMail()); // affichage de l'enseignant responsable
-        System.out.println();
-        System.out.println();
-        
-        // affichage des questions du sondage
-        for (int i=0; i<Questions.size(); i++){
-            System.out.println("♦ QUESTION N°" + (i+1) + " ♦\n");
-            Questions.get(i).AfficherQuest();
-            // appel de la méthode d'affichage d'une question
-        }
-        
-        // affichage du type de participation
-        if (this.anonyme == true){
-            System.out.println("\nParticipation anonyme.\n");
-        }
-        else {
-            System.out.println("\nParticipation non anonyme.\n");
-        }
-        
-        // affichage du type de diffusion des résultats
-        if ( this.affichageResultats == true){
-            System.out.println("\nAffichage résultats en temps réel pour tout le monde.\n");
-        }
-        else {
-            System.out.println("\nAffichage des résultats accessibles uniquement pour l'enseignant responsable.\n");
-        }
-        
-        // affichage des participants
-        System.out.println("\n\n\nListe des participants : \n");
-        for (int i = 0; i < this.Participants.size(); i++){
-            System.out.println((i+1)+"☻ " + this.Participants.get(i));
-        }
     }
     
     public void lancerQuestionnaire(){
@@ -191,37 +164,21 @@ public class Questionnaire {
     }
     
     // méthode permettant de rechercher les réponses d'un étudiant à un sondage
-    public void searchStudent(Teacher teache, Student stude){
-        Student anonymStud = new Student("Anonyme");
-        if (stude != anonymStud ){ // si la participation n'était pas anonyme
-            if(teacherRespo.getMail().equals(teache.getMail())){
-            // si le professeur en question est bien responsable du sondage
-                System.out.println(name); // affichage du nom du sondage
-                
-                for (int i=0; i<Questions.size(); i++){
-                // on parcourt le tableau des questions
-                    for (int j=0; j<Reponses.size(); j++){
-                    // on parcourt le tableau des réponses pour chaque question
-                        if (i == Reponses.get(i).getIndiceQuest() && stude.getMailStudent().equals(Reponses.get(j).getStudent().getMailStudent()) && Reponses.get(j).getIndiceRep()==-1){
-                        // si la réponse est celle d'une question ouverte, si le mail de l'étudiant correspond et si l'indice de question correspond
-                            System.out.println("Question : ");
-                            Questions.get(i).AfficherQuest(); // on affiche la question ouverte
-                            System.out.println("Réponse donnée par l'étudiant recherché : ");
-                            System.out.println(Reponses.get(i).getOpenRep()); // on affiche la réponse ouverte de l'étudiant
-                        }
-                        
-                        else if (i == Reponses.get(i).getIndiceQuest() && stude.getMailStudent().equals(Reponses.get(j).getStudent().getMailStudent()) && Reponses.get(j).getIndiceRep()>=0){
-                        // si la réponse est celle d'un QCM, si le mail de l'étudiant correspond et si l'indice de question correspond    
-                            System.out.println("Question : "); 
-                            Questions.get(i).AfficherQuest(); // on affiche le QCM
-                            System.out.println("Indice de la réponse donnée par l'étudiant recherché : ");
-                            System.out.println(Reponses.get(j).getIndiceRep()); // on affiche l'indice de la réponse de l'étudiant
-                        }
-                    }
+    public String searchRepStudent(Teacher teache, String mailEtud, int indiceQuest){
+        for (int j=0; j<Reponses.size(); j++){
+            // on parcourt le tableau des réponses
+                if (indiceQuest == Reponses.get(j).getIndiceQuest() && mailEtud.equals(Reponses.get(j).getStudent().getMailStudent()) && Reponses.get(j).getIndiceRep()==-1){
+                    return Reponses.get(j).getOpenRep();
+                }
+
+                else if (indiceQuest == Reponses.get(j).getIndiceQuest() && mailEtud.equals(Reponses.get(j).getStudent().getMailStudent()) && Reponses.get(j).getIndiceRep()>=0){
+                    return String.valueOf(Reponses.get(j).getIndiceRep()); // on retourne l'indice de la réponse de l'étudiant
                 }
             }
-        }
+        return null;
     }
+    
+    
     
     
     // méthode pour avoir l'affichage des réponses ouvertes les plus fréquentes

@@ -53,4 +53,8 @@ public class Question {
     public List<Integer> getScore() {
         return null;
     }
+
+    public List<Integer> getListScore() {
+        return null;
+    }
 }

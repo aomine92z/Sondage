@@ -26,11 +26,13 @@ public class S_ModifierS extends javax.swing.JDialog {
     private String nomSondageModif;
     private List<String> Participants = new ArrayList<String>(); 
     private List<Integer> Scores = new ArrayList<Integer>();
+    private static S_MenuProf fichMenuProfConnecte;
     
-    public S_ModifierS(java.awt.Frame parent, boolean modal, Site_sondage monSite) {
+    public S_ModifierS(java.awt.Frame parent, boolean modal, Site_sondage monSite, S_MenuProf menuProfConnecte) {
         super(parent, modal);
         initComponents();
         site = monSite;
+        fichMenuProfConnecte = menuProfConnecte;
         jLabAjoutQcm.setVisible(false);
         jLabAjoutQO.setVisible(false);
         jLabAjoutParticipant.setVisible(false);
@@ -77,6 +79,7 @@ public class S_ModifierS extends javax.swing.JDialog {
         validerNomSondageModif = new javax.swing.JButton();
         bSuppSondage = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        bQuitter2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -151,6 +154,13 @@ public class S_ModifierS extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setText("Modifier sondage");
 
+        bQuitter2.setText("Quitter");
+        bQuitter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuitter2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,6 +209,8 @@ public class S_ModifierS extends javax.swing.JDialog {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bQuitter2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(bSuppSondage)
                 .addGap(22, 22, 22))
         );
@@ -211,7 +223,9 @@ public class S_ModifierS extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addGap(42, 42, 42))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bSuppSondage)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bSuppSondage)
+                            .addComponent(bQuitter2))
                         .addGap(18, 18, 18)))
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -341,12 +355,15 @@ public class S_ModifierS extends javax.swing.JDialog {
 
     private void bFinModifSondageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinModifSondageActionPerformed
         // TODO add your handling code here:
-        
-        
-        // FAIRE QUELQUE CHOSE POUR POUVOIR REVENIR AU MENU PROF
-        
-        
+        this.setVisible(false);
+        fichMenuProfConnecte.setVisible(true); 
     }//GEN-LAST:event_bFinModifSondageActionPerformed
+
+    private void bQuitter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitter2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        fichMenuProfConnecte.setVisible(true);
+    }//GEN-LAST:event_bQuitter2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,7 +395,7 @@ public class S_ModifierS extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                S_ModifierS dialog = new S_ModifierS(new javax.swing.JFrame(), true, S_Accueil.getSite());
+                S_ModifierS dialog = new S_ModifierS(new javax.swing.JFrame(), true, S_Accueil.getSite(), fichMenuProfConnecte);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -393,6 +410,9 @@ public class S_ModifierS extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAjoutRep;
     private javax.swing.JToggleButton bFinModifSondage;
+    private javax.swing.JButton bQuitter;
+    private javax.swing.JButton bQuitter1;
+    private javax.swing.JButton bQuitter2;
     private javax.swing.JButton bSuppSondage;
     private javax.swing.JLabel jLabAjoutParticipant;
     private javax.swing.JLabel jLabAjoutQO;

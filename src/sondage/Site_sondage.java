@@ -100,23 +100,6 @@ public class Site_sondage {
         QuestList.remove(sondageAsupprimer);
     }
     
-    // méthode pour afficher les réponses à un sondage
-    public void afficherStudentRep(Teacher teache){
-        Scanner sc1 = new Scanner(System.in);
-        System.out.println("\nRenseignez le mail de l'étudiant dont vous voulez voir les réponses : ");
-        String mailStud = sc1.nextLine(); 
-        // le prof rentre le mail de l'étudiant dont il veut les réponses
-        System.out.println("Voici les réponses correspondant donnée par cet étudiant : ");
-        
-        Student etudiantAffichage = new Student(mailStud);
-        // on crée un étudiant avec le mail entré
-        // on parcourt ensuite la liste des sondages
-        for (int i=0; i<QuestList.size(); i++){
-            // on cherche le(s) sondage(s) fait par le prof en question 
-            // et au(x)quel(x) a répondu l'étudiant
-            QuestList.get(i).searchStudent(teache, etudiantAffichage);
-        }
-    }
     
     // méthode pour l'affichage général des résulats d'un sondage
     // je ne vais pas tout commenter ici :

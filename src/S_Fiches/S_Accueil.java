@@ -5,6 +5,11 @@
  */
 package S_Fiches;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import sondage.Site_sondage;
 
 /**
@@ -16,6 +21,8 @@ public class S_Accueil extends javax.swing.JFrame {
     private S_Enseignant fichEnseignant;
     private S_Etudiant fichEtudiant;
     private static Site_sondage monSite;
+    FileWriter fichier; 
+
     /**
      * Creates new form S_Acceuil
      */
@@ -24,14 +31,19 @@ public class S_Accueil extends javax.swing.JFrame {
         monSite = new Site_sondage();
         fichEtudiant = new S_Etudiant(this, false, monSite);
         fichEnseignant = new S_Enseignant(this, false, monSite);
+try {
+            monSite.depuisFichiers();
+        } 
+        catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Erreur de lecture du fichier. " + System.lineSeparator() + "Si l'erreur persiste entrez deux fois zéros en sautant une ligne dans le fichier de sauvegarde.");
+            System.exit(0);
+        } catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Erreur de lecture du fichier. " + System.lineSeparator() + "Le fichier de sauvegarde est vide." );
+            System.exit(0);
+
+        }
         
-        
-    }
-//    public S_InscriptionEns getfichInscriptionEns() {
-//        return fichInscriptionEns;
-//    }
-    
-    
+    }   
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +61,7 @@ public class S_Accueil extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        bSauvegarder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
@@ -84,6 +97,13 @@ public class S_Accueil extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Projet Sondage");
 
+        bSauvegarder.setText("Sauvegarder");
+        bSauvegarder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSauvegarderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,14 +119,17 @@ public class S_Accueil extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(117, 117, 117)
                         .addComponent(bEnseignant)
-                        .addGap(41, 41, 41)
-                        .addComponent(bEtudiant))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(bQuitter)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                        .addGap(67, 67, 67)
+                        .addComponent(bEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(80, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(bSauvegarder)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bQuitter)
+                .addGap(170, 170, 170))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +145,9 @@ public class S_Accueil extends javax.swing.JFrame {
                     .addComponent(bEnseignant)
                     .addComponent(bEtudiant))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(bQuitter)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bQuitter)
+                    .addComponent(bSauvegarder))
                 .addGap(24, 24, 24))
         );
 
@@ -153,6 +178,20 @@ public class S_Accueil extends javax.swing.JFrame {
        this.setVisible(false); //this = fiche dacceuil rendre invisible
        fichEnseignant.setVisible(true);
     }//GEN-LAST:event_bEnseignantActionPerformed
+
+    private void bSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvegarderActionPerformed
+        FileWriter fichier;
+        try {
+            fichier = new FileWriter("Données");
+            // appel de la methode de sauvegarde des données entrées dans le site
+            monSite.versFichiers(fichier);
+            fichier.close();
+        } 
+        catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Erreur de sauvegarde du fichier. ");
+        }
+        JOptionPane.showMessageDialog(this, "Merci d'avoir utilisé SondageSchool." + System.lineSeparator() + "A bientôt"); 
+    }//GEN-LAST:event_bSauvegarderActionPerformed
 
     public static Site_sondage getSite(){
         return monSite;
@@ -197,6 +236,7 @@ public class S_Accueil extends javax.swing.JFrame {
     private javax.swing.JButton bEnseignant;
     private javax.swing.JButton bEtudiant;
     private javax.swing.JButton bQuitter;
+    private javax.swing.JButton bSauvegarder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

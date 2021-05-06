@@ -18,7 +18,6 @@ public class S_MenuProf extends javax.swing.JDialog {
     private S_ModifierS fichModifierS;
     private S_AjouterS fichAjouterS;
     private S_ConsulEtu fichConsulEtu;
-    private S_ConsulGene fichConsulGene;
 
        
     /**
@@ -28,12 +27,10 @@ public class S_MenuProf extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         site = monSite;
-        fichAfficherS = new S_AfficherS(parent, false, site);
-        fichModifierS = new S_ModifierS(parent, false, site); 
-        fichAjouterS = new S_AjouterS(parent, false, site);
-        fichConsulEtu = new S_ConsulEtu(parent, false, site); 
-        fichConsulGene = new S_ConsulGene(parent, false, site);
-                 
+        fichAfficherS = new S_AfficherS(parent, false, site, this);
+        fichModifierS = new S_ModifierS(parent, false, site, this); 
+        fichAjouterS = new S_AjouterS(parent, false, site, this);
+        fichConsulEtu = new S_ConsulEtu(parent, false, site, this);             
     }
 
     /**
@@ -50,7 +47,6 @@ public class S_MenuProf extends javax.swing.JDialog {
         bAjouterS = new javax.swing.JButton();
         bModifierS = new javax.swing.JButton();
         bConsulEtu = new javax.swing.JButton();
-        bConsulGene = new javax.swing.JButton();
         bAfficherS = new javax.swing.JButton();
         bQuitter = new javax.swing.JButton();
 
@@ -83,13 +79,6 @@ public class S_MenuProf extends javax.swing.JDialog {
             }
         });
 
-        bConsulGene.setText("Consultation générale d'un sondage");
-        bConsulGene.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bConsulGeneActionPerformed(evt);
-            }
-        });
-
         bAfficherS.setText("Afficher un sondage");
         bAfficherS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,12 +105,9 @@ public class S_MenuProf extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(bConsulEtu)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                                 .addComponent(bQuitter))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(bAfficherS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bConsulGene))
+                            .addComponent(bAfficherS)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(bAjouterS)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -141,9 +127,7 @@ public class S_MenuProf extends javax.swing.JDialog {
                     .addComponent(bAjouterS)
                     .addComponent(bModifierS))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bConsulGene)
-                    .addComponent(bAfficherS))
+                .addComponent(bAfficherS)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bConsulEtu)
@@ -171,11 +155,6 @@ public class S_MenuProf extends javax.swing.JDialog {
         this.setVisible(false);
         fichAjouterS.setVisible(true);     
     }//GEN-LAST:event_bAjouterSActionPerformed
-
-    private void bConsulGeneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsulGeneActionPerformed
-        this.setVisible(false);
-        fichConsulGene.setVisible(true);     
-    }//GEN-LAST:event_bConsulGeneActionPerformed
 
     private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
         this.setVisible(false);
@@ -243,7 +222,6 @@ public class S_MenuProf extends javax.swing.JDialog {
     private javax.swing.JButton bAfficherS;
     private javax.swing.JButton bAjouterS;
     private javax.swing.JButton bConsulEtu;
-    private javax.swing.JButton bConsulGene;
     private javax.swing.JButton bModifierS;
     private javax.swing.JButton bQuitter;
     private javax.swing.JLabel jLabel1;
