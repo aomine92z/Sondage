@@ -424,6 +424,7 @@ public class S_AjouterS extends javax.swing.JDialog {
 
     private void validerQuestionnaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerQuestionnaireActionPerformed
         // TODO add your handling code here:
+        nomSondage = tfNomS.getText();
         Random rand = new Random();
         int CodeSondage = rand.nextInt(90000) + 10000;
         Questionnaire nouveauSondage = new Questionnaire (nomSondage, S_ConnexionEns.getProfConnecte(), Questions, Participants, anonyme, affichageTempsReel, CodeSondage);

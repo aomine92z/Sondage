@@ -314,12 +314,15 @@ public class S_ModifierS extends javax.swing.JDialog {
         String nouveauNom = tfNewN.getText();
         site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif).setName(nouveauNom);
         nomSondageModif = nouveauNom;
+        tfNewN.setText(null);
+        
     }//GEN-LAST:event_validerChangementNomActionPerformed
 
     private void validerAjoutParticipantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerAjoutParticipantActionPerformed
         // TODO add your handling code here:
         String nouveauParticipant = tfAjouterParticipant.getText();
         site.searchSondage(S_ConnexionEns.getProfConnecte().getMail(), nomSondageModif).ajouterParticipant(nouveauParticipant);
+        tfAjouterParticipant.setText(null);
     }//GEN-LAST:event_validerAjoutParticipantActionPerformed
 
     private void bSuppSondageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSuppSondageActionPerformed
